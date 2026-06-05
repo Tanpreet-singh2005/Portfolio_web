@@ -97,7 +97,6 @@ const EXPERIENCES: Experience[] = [
     icon: '🎙️',
   },
 ];
-
 export default function ExperienceSection() {
   const headerRef = useReveal();
 
@@ -114,47 +113,38 @@ export default function ExperienceSection() {
           </p>
         </div>
 
-        <div className="relative">
-          {/* Timeline vertical line */}
-          <div className="absolute left-8 top-0 bottom-0 w-px timeline-line hidden sm:block" />
+        <div className="max-w-3xl mx-auto space-y-6">
+          {EXPERIENCES.map((exp, i) => (
+            <RevealCard key={i} delay={Math.min(i * 80, 400)}>
+              <div className={`experience-card group glass rounded-2xl p-6 border transition-all duration-300 cursor-pointer text-center flex flex-col items-center justify-center ${exp.highlight ? 'border-purple-500/50 glow-purple' : 'border-slate-700/50'}`}>
+                <h3 className="text-white font-bold text-lg sm:text-xl">{exp.role}</h3>
+                <p className="gradient-text font-semibold text-sm mt-1">{exp.org}</p>
 
-          <div className="space-y-8">
-            {EXPERIENCES.map((exp, i) => (
-              <RevealCard key={i} delay={Math.min(i * 80, 400)} className="flex gap-6">
-                {/* Icon bubble */}
-                <div className="hidden sm:flex flex-shrink-0 w-16 h-16 items-center justify-center rounded-full glass border border-purple-500/30 text-2xl z-10 self-start mt-2">
-                  {exp.icon}
-                </div>
-
-                {/* Card */}
-                <div className={`flex-1 card-3d glass rounded-2xl p-6 border transition-all ${exp.highlight ? 'border-purple-500/50 glow-purple' : 'border-slate-700/50'}`}>
-                  <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
-                    <div>
-                      <h3 className="text-white font-bold text-lg">{exp.role}</h3>
-                      <p className="gradient-text-blue font-semibold text-sm">{exp.org}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-slate-400 text-xs">{exp.period}</p>
-                      <p className="text-purple-400 text-xs font-medium">{exp.duration}</p>
+                <div className="experience-card-content w-full">
+                  <div className="experience-card-inner">
+                    <div className="pt-5 mt-5 border-t border-slate-800/50 flex flex-col items-center gap-3">
+                      <div className="flex gap-4 text-xs text-slate-400 justify-center">
+                        <span>{exp.period}</span>
+                        <span>•</span>
+                        <span className="text-purple-400 font-medium">{exp.duration}</span>
+                      </div>
+                      <p className="text-slate-400 text-sm leading-relaxed max-w-xl mx-auto">{exp.description}</p>
+                      <div className="flex flex-wrap justify-center gap-2 mt-2">
+                        {exp.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-xs px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-
-                  <p className="text-slate-400 text-sm leading-relaxed mb-4">{exp.description}</p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {exp.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
                 </div>
-              </RevealCard>
-            ))}
-          </div>
+              </div>
+            </RevealCard>
+          ))}
         </div>
       </div>
     </section>
