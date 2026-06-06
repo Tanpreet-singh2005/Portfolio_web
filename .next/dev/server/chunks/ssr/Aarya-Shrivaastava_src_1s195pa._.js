@@ -1981,6 +1981,52 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$src
 ;
 ;
 ;
+function App() {
+    const containerStyle = {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+        backgroundColor: '#f3f4f6'
+    };
+    const sectionStyle = {
+        maxWidth: '500px',
+        width: '100%',
+        padding: '24px',
+        backgroundColor: '#ffffff'
+    };
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        style: containerStyle,
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+            style: sectionStyle,
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                    children: "Centered Section"
+                }, void 0, false, {
+                    fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
+                    lineNumber: 23,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    children: "Centered using Flexbox via React inline styles."
+                }, void 0, false, {
+                    fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
+                    lineNumber: 24,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
+            lineNumber: 22,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
+        lineNumber: 21,
+        columnNumber: 5
+    }, this);
+}
+const __TURBOPACK__default__export__ = App;
 const CERTS = [
     {
         title: 'Marketing Analytics',
@@ -2025,7 +2071,7 @@ function CertificationsSection() {
                             children: "Credentials"
                         }, void 0, false, {
                             fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                            lineNumber: 41,
+                            lineNumber: 67,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -2037,13 +2083,13 @@ function CertificationsSection() {
                                     children: "Learning"
                                 }, void 0, false, {
                                     fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                                    lineNumber: 43,
+                                    lineNumber: 69,
                                     columnNumber: 30
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                            lineNumber: 42,
+                            lineNumber: 68,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2051,13 +2097,13 @@ function CertificationsSection() {
                             children: "Continuous learning from premier institutions — IIT Madras, IIT Kharagpur, and industry-recognized programs."
                         }, void 0, false, {
                             fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                            lineNumber: 45,
+                            lineNumber: 71,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                    lineNumber: 40,
+                    lineNumber: 66,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2070,7 +2116,7 @@ function CertificationsSection() {
                                     className: "absolute inset-0 bg-white/0 group-hover:bg-white/[0.02] transition-all duration-500 rounded-2xl"
                                 }, void 0, false, {
                                     fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                                    lineNumber: 57,
+                                    lineNumber: 83,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2081,7 +2127,7 @@ function CertificationsSection() {
                                             children: cert.icon
                                         }, void 0, false, {
                                             fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                                            lineNumber: 59,
+                                            lineNumber: 85,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2089,7 +2135,7 @@ function CertificationsSection() {
                                             children: cert.title
                                         }, void 0, false, {
                                             fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                                            lineNumber: 60,
+                                            lineNumber: 86,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2097,35 +2143,35 @@ function CertificationsSection() {
                                             children: cert.issuer
                                         }, void 0, false, {
                                             fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                                            lineNumber: 61,
+                                            lineNumber: 87,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                                    lineNumber: 58,
+                                    lineNumber: 84,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, i, true, {
                             fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                            lineNumber: 52,
+                            lineNumber: 78,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                    lineNumber: 50,
+                    lineNumber: 76,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-            lineNumber: 39,
+            lineNumber: 65,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-        lineNumber: 38,
+        lineNumber: 64,
         columnNumber: 5
     }, this);
 }
@@ -2143,7 +2189,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$src
 ;
 ;
 // 🔁 Replace this URL with your actual Google Drive share link
-const RESUME_DRIVE_URL = 'https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing';
+const RESUME_DRIVE_URL = 'https://drive.google.com/file/d/1AaIKb5kx0G_pus__ku4AFw2GcFLkjP4T/view?usp=sharing';
 function ResumeSection() {
     const ref = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$src$2f$hooks$2f$useReveal$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useReveal"])();
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
