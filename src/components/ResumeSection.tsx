@@ -32,7 +32,7 @@ export default function ResumeSection() {
 
                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
                   <a
-                    href={RESUME_DRIVE_URL}
+                    href='https://drive.google.com/file/d/1AaIKb5kx0G_pus__ku4AFw2GcFLkjP4T/view?usp=sharing'//{RESUME_DRIVE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-shimmer px-10 py-3.5 rounded-full text-white font-bold text-sm inline-flex items-center gap-2 cursor-pointer shadow-lg"

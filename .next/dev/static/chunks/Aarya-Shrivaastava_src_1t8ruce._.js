@@ -2441,7 +2441,7 @@ function ResumeSection() {
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "flex flex-wrap items-center justify-center md:justify-start gap-4",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                                    href: RESUME_DRIVE_URL,
+                                                    href: "https://drive.google.com/file/d/1AaIKb5kx0G_pus__ku4AFw2GcFLkjP4T/view?usp=sharing",
                                                     target: "_blank",
                                                     rel: "noopener noreferrer",
                                                     className: "btn-shimmer px-10 py-3.5 rounded-full text-white font-bold text-sm inline-flex items-center gap-2 cursor-pointer shadow-lg",
