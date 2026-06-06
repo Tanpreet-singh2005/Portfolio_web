@@ -10,14 +10,6 @@ const SKILLS = {
   'Soft Skills': ['PR & Outreach', 'Event Management', 'Public Speaking', 'Finance Planning', 'Team Leadership'],
 };
 
-const CATEGORY_COLORS: Record<string, string> = {
-  'Languages': 'from-purple-500/20 to-violet-500/20 border-purple-500/30',
-  'Core CS': 'from-indigo-500/20 to-blue-500/20 border-indigo-500/30',
-  'Web & Tools': 'from-cyan-500/20 to-teal-500/20 border-cyan-500/30',
-  'AI / ML': 'from-pink-500/20 to-rose-500/20 border-pink-500/30',
-  'Soft Skills': 'from-amber-500/20 to-orange-500/20 border-amber-500/30',
-};
-
 const CATEGORY_ICONS: Record<string, string> = {
   'Languages': '⚡',
   'Core CS': '🧠',
@@ -31,30 +23,31 @@ export default function SkillsSection() {
 
   return (
     <section id="skills" className="py-28 px-6 section-bg">
-      <div className="max-w-6xl mx-auto">
-        <div ref={headerRef} className="reveal section-header">
-          <p className="text-purple-400 font-mono text-sm mb-3 tracking-widest uppercase">What I Know</p>
-          <h2 className="text-4xl sm:text-5xl font-black text-white">
+      <div className="max-w-6xl mx-auto flex flex-col items-center">
+        <div ref={headerRef} className="reveal section-header text-center w-full">
+          <p className="text-red-400 font-mono text-sm mb-3 tracking-widest uppercase">What I Know</p>
+          <h2 className="text-4xl sm:text-5xl font-black text-foreground">
             Skills & <span className="gradient-text">Expertise</span>
           </h2>
-          <p className="text-slate-400 mt-4 max-w-xl mx-auto">
+          <p className="text-foreground opacity-55 mt-4 max-w-xl mx-auto">
             A blend of programming fundamentals, modern tooling, and leadership skills built across coursework, open-source, and clubs.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10">
           {Object.entries(SKILLS).map(([category, skills], i) => (
             <RevealCard
               key={category}
               delay={i * 100}
-              className={`card-3d glass rounded-2xl p-6 border bg-gradient-to-br ${CATEGORY_COLORS[category]} text-center flex flex-col items-center justify-center`}
+              className="card-3d glass rounded-2xl p-8 sm:p-10 border border-red-500/20 text-center flex flex-col items-center justify-between min-h-[250px] h-full overflow-hidden"
             >
-              <div className="flex flex-col items-center mb-5">
-                <h3 className="text-white font-bold text-lg">{category}</h3>
+              <div className="flex flex-col items-center mb-5 w-full">
+                <span className="text-3xl mb-3">{CATEGORY_ICONS[category]}</span>
+                <h3 className="text-foreground font-bold text-lg">{category}</h3>
               </div>
-              <div className="flex flex-wrap justify-center gap-2">
+              <div className="flex flex-wrap justify-center gap-2.5 mt-auto">
                 {skills.map((skill) => (
-                  <span key={skill} className="skill-pill px-3 py-1 rounded-full text-xs text-slate-200 font-medium cursor-default">
+                  <span key={skill} className="skill-pill px-3.5 py-1.5 rounded-full text-xs text-foreground font-semibold cursor-default">
                     {skill}
                   </span>
                 ))}
@@ -65,7 +58,7 @@ export default function SkillsSection() {
           {/* HackerRank star card */}
           <RevealCard
             delay={600}
-            className="card-3d glass rounded-2xl p-6 border border-yellow-500/30 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 flex flex-col items-center justify-center text-center col-span-full lg:col-span-1"
+            className="card-3d glass rounded-2xl p-8 sm:p-10 border border-yellow-500/30 flex flex-col items-center justify-center text-center col-span-full lg:col-span-1 min-h-[250px]"
           >
             <div className="flex gap-1 mb-3 justify-center animate-float">
               {[...Array(4)].map((_, i) => (
@@ -74,8 +67,8 @@ export default function SkillsSection() {
                 </svg>
               ))}
             </div>
-            <h3 className="text-white font-bold text-lg mb-1">HackerRank 4★ C++</h3>
-            <p className="text-slate-400 text-sm mb-4">Ranked among top competitive programmers</p>
+            <h3 className="text-foreground font-bold text-lg mb-1">HackerRank 4★ C++</h3>
+            <p className="text-foreground opacity-55 text-sm mb-5">Ranked among top competitive programmers</p>
             <a
               href="https://hackerrank.com/profile/aarya_shrivaast2"
               target="_blank"

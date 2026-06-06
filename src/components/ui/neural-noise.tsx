@@ -9,9 +9,9 @@ interface NeuralNoiseProps {
 }
 
 export function NeuralNoise({
-  color = [0.9, 0.2, 0.4],
-  opacity = 0.95,
-  speed = 0.001,
+  color = [0.92, 0.1, 0.1],
+  opacity = 0.92,
+  speed = 0.0007,
 }: NeuralNoiseProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const glRef = useRef<WebGLRenderingContext | null>(null);
@@ -30,6 +30,7 @@ export function NeuralNoise({
     const resizeListener = () => resizeCanvas();
     window.addEventListener('resize', resizeListener);
 
+    // Initial uniform values
     gl.uniform3f(uniformsRef.current.u_color, color[0], color[1], color[2]);
     gl.uniform1f(uniformsRef.current.u_speed, speed);
 
@@ -41,7 +42,25 @@ export function NeuralNoise({
       cleanupEvents();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [color, speed]);
+  }, []);
+
+  // Dynamic color uniform update
+  useEffect(() => {
+    const gl = glRef.current;
+    if (gl && uniformsRef.current.u_color) {
+      gl.useProgram(gl.getParameter(gl.CURRENT_PROGRAM));
+      gl.uniform3f(uniformsRef.current.u_color, color[0], color[1], color[2]);
+    }
+  }, [color[0], color[1], color[2]]);
+
+  // Dynamic speed uniform update
+  useEffect(() => {
+    const gl = glRef.current;
+    if (gl && uniformsRef.current.u_speed) {
+      gl.useProgram(gl.getParameter(gl.CURRENT_PROGRAM));
+      gl.uniform1f(uniformsRef.current.u_speed, speed);
+    }
+  }, [speed]);
 
   function initShader(): WebGLRenderingContext | null {
     const vsSource = `
@@ -88,11 +107,14 @@ export function NeuralNoise({
         float t = u_speed * u_time;
         vec3 col = vec3(0.0);
         float noise = neuro_shape(uv, t, p);
-        noise = 1.2 * pow(noise, 3.0);
-        noise += pow(noise, 10.0);
-        noise = max(0.0, noise - 0.5);
-        noise *= (1.0 - length(vUv - 0.5));
-        col = u_color * noise;
+        noise = 1.6 * pow(noise, 2.4);
+        noise += pow(noise, 6.0);
+        noise = max(0.0, noise - 0.25);
+        noise = min(noise, 1.0);
+        float vignette = 1.0 - 0.35 * length(vUv - 0.5);
+        noise *= vignette;
+        col = u_color * noise * 2.0;
+        col = min(col, vec3(1.0));
         gl_FragColor = vec4(col, noise);
       }
     `;
@@ -101,12 +123,17 @@ export function NeuralNoise({
     if (!canvasEl) return null;
 
     const gl =
-      (canvasEl.getContext('webgl') ||
-        canvasEl.getContext('experimental-webgl')) as WebGLRenderingContext | null;
+      (canvasEl.getContext('webgl', { alpha: true, premultipliedAlpha: false }) ||
+        canvasEl.getContext('experimental-webgl', { alpha: true, premultipliedAlpha: false })) as WebGLRenderingContext | null;
     if (!gl) {
       console.error('WebGL not supported');
       return null;
     }
+
+    // Enable alpha blending so transparent pixels show the background through
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    gl.clearColor(0, 0, 0, 0);
 
     const vertexShader = createShader(gl, vsSource, gl.VERTEX_SHADER);
     const fragmentShader = createShader(gl, fsSource, gl.FRAGMENT_SHADER);
@@ -185,6 +212,9 @@ export function NeuralNoise({
     const currentTime = performance.now();
     pointer.current.x += (pointer.current.tX - pointer.current.x) * 0.2;
     pointer.current.y += (pointer.current.tY - pointer.current.y) * 0.2;
+
+    // Clear to fully transparent each frame so background shows through
+    gl.clear(gl.COLOR_BUFFER_BIT);
 
     gl.uniform1f(uniforms.u_time, currentTime);
     gl.uniform2f(

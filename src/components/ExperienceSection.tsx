@@ -97,43 +97,45 @@ const EXPERIENCES: Experience[] = [
     icon: '🎙️',
   },
 ];
+
 export default function ExperienceSection() {
   const headerRef = useReveal();
 
   return (
-    <section id="experience" className="py-28 px-6">
-      <div className="max-w-4xl mx-auto">
-        <div ref={headerRef} className="reveal section-header">
-          <p className="text-purple-400 font-mono text-sm mb-3 tracking-widest uppercase">My Journey</p>
-          <h2 className="text-4xl sm:text-5xl font-black text-white">
-            Experience &amp; <span className="gradient-text">Activities</span>
+    <section id="experience" className="pt-36 pb-28 px-6">
+      <div className="max-w-6xl mx-auto flex flex-col items-center">
+        <div ref={headerRef} className="reveal section-header text-center w-full">
+          <p className="text-red-400 font-mono text-sm mb-3 tracking-widest uppercase">My Journey</p>
+          <h2 className="text-4xl sm:text-5xl font-black text-foreground">
+            Experience & <span className="gradient-text">Activities</span>
           </h2>
-          <p className="text-slate-400 mt-4 max-w-xl mx-auto">
+          <p className="text-foreground opacity-55 mt-4 max-w-xl mx-auto">
             From internships to open-source sprints, leadership roles to podcast hosting — here's what I've been up to.
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto space-y-6">
+        <div className="grid md:grid-cols-2 gap-8 w-full mt-10">
           {EXPERIENCES.map((exp, i) => (
             <RevealCard key={i} delay={Math.min(i * 80, 400)}>
-              <div className={`experience-card group glass rounded-2xl p-6 border transition-all duration-300 cursor-pointer text-center flex flex-col items-center justify-center ${exp.highlight ? 'border-purple-500/50 glow-purple' : 'border-slate-700/50'}`}>
-                <h3 className="text-white font-bold text-lg sm:text-xl">{exp.role}</h3>
+              <div className={`experience-card group glass rounded-2xl p-8 sm:p-10 border transition-all duration-300 cursor-pointer text-center flex flex-col items-center justify-center h-full ${exp.highlight ? 'border-red-500/40 glow-rose' : 'border-white/10'}`}>
+                <span className="text-3xl mb-3">{exp.icon}</span>
+                <h3 className="text-foreground font-bold text-lg sm:text-xl">{exp.role}</h3>
                 <p className="gradient-text font-semibold text-sm mt-1">{exp.org}</p>
 
                 <div className="experience-card-content w-full">
                   <div className="experience-card-inner">
-                    <div className="pt-5 mt-5 border-t border-slate-800/50 flex flex-col items-center gap-3">
-                      <div className="flex gap-4 text-xs text-slate-400 justify-center">
+                    <div className="pt-5 mt-5 border-t border-white/10 flex flex-col items-center gap-3">
+                      <div className="flex gap-4 text-xs text-foreground opacity-50 justify-center">
                         <span>{exp.period}</span>
                         <span>•</span>
-                        <span className="text-purple-400 font-medium">{exp.duration}</span>
+                        <span className="text-red-400 opacity-100 font-medium">{exp.duration}</span>
                       </div>
-                      <p className="text-slate-400 text-sm leading-relaxed max-w-xl mx-auto">{exp.description}</p>
+                      <p className="text-foreground opacity-65 text-sm leading-relaxed max-w-xl mx-auto">{exp.description}</p>
                       <div className="flex flex-wrap justify-center gap-2 mt-2">
                         {exp.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="text-xs px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20"
+                            className="text-xs px-2.5 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20"
                           >
                             {tag}
                           </span>

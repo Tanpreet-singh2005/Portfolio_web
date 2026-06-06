@@ -17,7 +17,7 @@ const firaCode = Fira_Code({
 export const metadata: Metadata = {
   title: "Aarya Shrivaastava | B.Tech CSE Portfolio",
   description:
-    "Portfolio of Aarya Shrivaastava — Pre-final year B.Tech CSE student at VIT Bhopal. Proficient in C, C++, Python & OOP. HackerRank 4⭐ in C++. PR & Outreach Lead at AI Club. Open source contributor.",
+    "Portfolio of Aarya Shrivaastava — Final year B.Tech CSE student at VIT Bhopal. Proficient in C, C++, Python & OOP. HackerRank 4⭐ in C++. PR & Outreach Lead at AI Club. Open source contributor.",
   keywords: [
     "Aarya Shrivaastava",
     "VIT Bhopal",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Aarya Shrivaastava | B.Tech CSE Portfolio",
     description:
-      "Pre-final year CSE student at VIT Bhopal — HackerRank 4⭐ C++, Open Source Contributor, AI Club PR Lead.",
+      "Final year CSE student at VIT Bhopal — HackerRank 4⭐ C++, Open Source Contributor, AI Club PR Lead.",
     type: "website",
   },
 };

@@ -89,52 +89,51 @@ export default function HeroSection() {
     >
       {/* Orbit rings */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[600px] h-[600px] rounded-full border border-purple-500/10 animate-spin-slow" />
-        <div className="absolute w-[420px] h-[420px] rounded-full border border-indigo-500/10" style={{ animationDuration: '12s' }} />
+        <div className="w-[600px] h-[600px] rounded-full border border-red-500/10 animate-spin-slow" />
+        <div className="absolute w-[420px] h-[420px] rounded-full border border-red-500/8" />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto">
+      <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-purple-500/30 text-xs text-purple-300 mb-8 animate-fade-in-up">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-red-500/30 text-xs text-red-400 mb-8 animate-fade-in-up">
           <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
           Open to Software Internships
         </div>
 
         {/* Name */}
-        <h1 className="text-5xl sm:text-7xl font-black tracking-tight text-white mb-4 animate-fade-in-up delay-100">
+        <h1 className="text-5xl sm:text-7xl font-black tracking-tight text-foreground mb-4 animate-fade-in-up delay-100">
           Aarya{' '}
           <span className="gradient-text glow-text">Shrivaastava</span>
         </h1>
 
         {/* Typing role */}
         <div className="h-12 flex items-center justify-center mb-6 animate-fade-in-up delay-200">
-          <span className="text-xl sm:text-2xl font-medium text-slate-300 font-mono">
+          <span className="text-xl sm:text-2xl font-medium text-foreground opacity-70 font-mono">
             {displayed}
-            <span className="animate-blink text-purple-400">|</span>
+            <span className="animate-blink text-red-400">|</span>
           </span>
         </div>
 
         {/* Tagline */}
-        <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-4 animate-fade-in-up delay-300 leading-relaxed">
-          Pre-final year CSE student at{' '}
-          <span className="text-purple-300 font-semibold">VIT Bhopal</span>, crafting efficient &
+        <p className="text-foreground opacity-60 text-base sm:text-lg max-w-2xl mx-auto mb-4 animate-fade-in-up delay-300 leading-relaxed">
+          Final year CSE student at{' '}
+          <span className="text-red-400 font-semibold opacity-100">VIT Bhopal</span>, crafting efficient &
           scalable software. HackerRank{' '}
-          <span className="text-yellow-400 font-bold">4⭐ in C++</span> · Open Source Contributor ·
+          <span className="text-yellow-400 font-bold opacity-100">4⭐ in C++</span> · Open Source Contributor ·
           AI Club PR Lead.
         </p>
-
 
         {/* CTA Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-4 mb-12 animate-fade-in-up delay-500">
           <a
             href="#resume"
-            className="btn-shimmer px-8 py-3 rounded-full text-white font-semibold text-sm shadow-lg shadow-purple-900/40 animate-pulse-glow"
+            className="btn-shimmer px-8 py-3 rounded-full text-white font-semibold text-sm shadow-lg animate-pulse-glow"
           >
             📄 View Resume
           </a>
           <a
             href="#experience"
-            className="px-8 py-3 rounded-full glass border border-slate-600 text-slate-200 font-semibold text-sm hover:border-purple-500 hover:text-white transition-all"
+            className="px-8 py-3 rounded-full glass border border-white/20 text-foreground font-semibold text-sm hover:border-red-400 hover:text-red-400 transition-all"
           >
             Explore Work ↓
           </a>
@@ -149,7 +148,7 @@ export default function HeroSection() {
               target="_blank"
               rel="noopener noreferrer"
               title={name}
-              className="w-11 h-11 flex items-center justify-center rounded-full glass border border-slate-700 text-slate-400 hover:text-white hover:border-purple-500 hover:bg-purple-500/10 transition-all hover:scale-110 hover:-translate-y-1"
+              className="w-11 h-11 flex items-center justify-center rounded-full glass border border-white/15 text-foreground opacity-60 hover:opacity-100 hover:border-red-400 hover:text-red-400 hover:bg-red-500/10 transition-all hover:scale-110 hover:-translate-y-1"
             >
               {icon}
             </a>
@@ -158,9 +157,9 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 text-xs animate-float">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-foreground opacity-40 text-xs animate-float">
         <span>scroll</span>
-        <div className="w-px h-10 bg-gradient-to-b from-purple-400 to-transparent" />
+        <div className="w-px h-10 bg-gradient-to-b from-red-400 to-transparent" />
       </div>
     </section>
   );

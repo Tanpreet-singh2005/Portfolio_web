@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useState } from "react";
 import { NeuralNoise } from "@/components/ui/neural-noise";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -9,33 +12,55 @@ import ResumeSection from "@/components/ResumeSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null;
+    const resolved = savedTheme ?? 'dark';
+    setTheme(resolved);
+    document.documentElement.classList.remove('dark', 'light');
+    document.documentElement.classList.add(resolved);
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+    localStorage.setItem('theme', nextTheme);
+    document.documentElement.classList.remove('dark', 'light');
+    document.documentElement.classList.add(nextTheme);
+  };
+
   return (
-    <main className="relative min-h-screen">
-      {/* NeuralNoise WebGL Background — purple/violet palette */}
-      <NeuralNoise
-        color={[0.55, 0.15, 0.95]}
-        opacity={0.85}
-        speed={0.0008}
-      />
+    <main
+      className="relative min-h-screen transition-colors duration-500"
+      style={{ background: 'var(--background)', color: 'var(--foreground)' }}
+    >
+      {/* ── Layer order (bottom → top) ──
+          z: -20  solid base colour  (black / white)
+          z: -10  WebGL canvas — transparent bg, red neurons glow
+          z:  0+  page content (cards, text, etc.)
+      */}
 
-      {/* Deep dark base so text stays readable */}
+      {/* Solid base colour — sits BELOW the WebGL canvas */}
       <div
-        className="fixed inset-0 pointer-events-none"
-        style={{ background: '#050510', zIndex: -11 }}
-      />
-
-      {/* Subtle vignette overlay for depth */}
-      <div
-        className="fixed inset-0 pointer-events-none"
         style={{
-          background:
-            'radial-gradient(ellipse at center, transparent 40%, rgba(5,5,16,0.7) 100%)',
-          zIndex: -9,
+          position: 'fixed',
+          inset: 0,
+          background: theme === 'dark' ? '#080810' : '#f9fafb',
+          zIndex: -20,
+          pointerEvents: 'none',
         }}
       />
 
+      {/* WebGL Neural Background — transparent, red neurons float on base */}
+      <NeuralNoise
+        color={theme === 'dark' ? [0.92, 0.1, 0.1] : [0.80, 0.10, 0.10]}
+        opacity={theme === 'dark' ? 1 : 0.22}
+        speed={0.0007}
+      />
+
       {/* Navigation */}
-      <Navbar />
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
 
       {/* Sections */}
       <HeroSection />
