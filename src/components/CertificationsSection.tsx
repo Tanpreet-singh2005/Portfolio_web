@@ -3,24 +3,25 @@ import { useReveal } from '@/hooks/useReveal';
 import { RevealCard } from '@/components/RevealCard';
 
 const CERTS = [
-  {
-    title: 'Introduction to Machine Learning',
-    issuer: 'IIT Madras',
-    icon: '🎓',
-  },
+
   {
     title: 'Marketing Analytics',
-    issuer: 'IIT Kharagpur',
+    issuer: 'IIT Kharagpur | NPTEL | 99% | Top 1% Topper | Elite + Gold',
     icon: '📊',
   },
   {
+    title: 'Introduction to Machine Learning',
+    issuer: 'IIT Madras | NPTEL | 71% | Elite',
+    icon: '🎓',
+  },
+  {
     title: 'Fundamentals of AI and ML',
-    issuer: 'Professional Certification',
+    issuer: 'Professional Certification by VITyarthi',
     icon: '🤖',
   },
   {
     title: 'Python Essentials',
-    issuer: 'Professional Certification',
+    issuer: 'Professional Certification by VITyarthi',
     icon: '🐍',
   },
   {

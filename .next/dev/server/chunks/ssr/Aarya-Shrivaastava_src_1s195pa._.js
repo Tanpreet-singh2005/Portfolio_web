@@ -1983,23 +1983,23 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$src
 ;
 const CERTS = [
     {
-        title: 'Introduction to Machine Learning',
-        issuer: 'IIT Madras',
-        icon: '🎓'
-    },
-    {
         title: 'Marketing Analytics',
-        issuer: 'IIT Kharagpur',
+        issuer: 'IIT Kharagpur | NPTEL | 99% | Top 1% Topper | Elite + Gold',
         icon: '📊'
     },
     {
+        title: 'Introduction to Machine Learning',
+        issuer: 'IIT Madras | NPTEL | 71% | Elite',
+        icon: '🎓'
+    },
+    {
         title: 'Fundamentals of AI and ML',
-        issuer: 'Professional Certification',
+        issuer: 'Professional Certification by VITyarthi',
         icon: '🤖'
     },
     {
         title: 'Python Essentials',
-        issuer: 'Professional Certification',
+        issuer: 'Professional Certification by VITyarthi',
         icon: '🐍'
     },
     {
@@ -2025,7 +2025,7 @@ function CertificationsSection() {
                             children: "Credentials"
                         }, void 0, false, {
                             fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                            lineNumber: 40,
+                            lineNumber: 41,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -2037,13 +2037,13 @@ function CertificationsSection() {
                                     children: "Learning"
                                 }, void 0, false, {
                                     fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                                    lineNumber: 42,
+                                    lineNumber: 43,
                                     columnNumber: 30
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                            lineNumber: 41,
+                            lineNumber: 42,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2051,13 +2051,13 @@ function CertificationsSection() {
                             children: "Continuous learning from premier institutions — IIT Madras, IIT Kharagpur, and industry-recognized programs."
                         }, void 0, false, {
                             fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                            lineNumber: 44,
+                            lineNumber: 45,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                    lineNumber: 39,
+                    lineNumber: 40,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2070,7 +2070,7 @@ function CertificationsSection() {
                                     className: "absolute inset-0 bg-white/0 group-hover:bg-white/[0.02] transition-all duration-500 rounded-2xl"
                                 }, void 0, false, {
                                     fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                                    lineNumber: 56,
+                                    lineNumber: 57,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2081,7 +2081,7 @@ function CertificationsSection() {
                                             children: cert.icon
                                         }, void 0, false, {
                                             fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                                            lineNumber: 58,
+                                            lineNumber: 59,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2089,7 +2089,7 @@ function CertificationsSection() {
                                             children: cert.title
                                         }, void 0, false, {
                                             fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                                            lineNumber: 59,
+                                            lineNumber: 60,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2097,35 +2097,35 @@ function CertificationsSection() {
                                             children: cert.issuer
                                         }, void 0, false, {
                                             fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                                            lineNumber: 60,
+                                            lineNumber: 61,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                                    lineNumber: 57,
+                                    lineNumber: 58,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, i, true, {
                             fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                            lineNumber: 51,
+                            lineNumber: 52,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-                    lineNumber: 49,
+                    lineNumber: 50,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-            lineNumber: 38,
+            lineNumber: 39,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Aarya-Shrivaastava/src/components/CertificationsSection.tsx",
-        lineNumber: 37,
+        lineNumber: 38,
         columnNumber: 5
     }, this);
 }
