@@ -16,12 +16,14 @@ export default function AboutSection() {
     <section id="about" className="py-28 px-6 section-bg">
       <div style={{ maxWidth: '896px', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         {/* Text */}
-        <div ref={ref} className="reveal flex flex-col items-center w-full">
-          <p className="text-red-400 font-mono text-sm mb-3 tracking-widest uppercase">About Me</p>
+        <div ref={ref} className="reveal -mt-16 flex flex-col items-center w-full">
+          <p className="text-red-400 font-mono text-sm mb-15 tracking-widest uppercase">About Me</p>
+          <br/>
           <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-8">
             Building the <span className="gradient-text">Future</span>,<br />
             One Line at a Time
           </h2>
+          < br />
           <div style={{ background: 'var(--glass)', border: '1px solid rgba(229,62,62,0.2)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderRadius: '24px', padding: '2.5rem', width: '100%', maxWidth: '800px', marginBottom: '2rem', boxShadow: '0 10px 40px rgba(0,0,0,0.2)' }}>
             <div className="space-y-4 text-foreground opacity-75 leading-relaxed text-justify">
               <p>

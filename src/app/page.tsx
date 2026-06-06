@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <main
       className="relative min-h-screen transition-colors duration-500"
-      style={{ background: 'var(--background)', color: 'var(--foreground)' }}
+      style={{ color: 'var(--foreground)' }}
     >
       {/* ── Layer order (bottom → top) ──
           z: -20  solid base colour  (black / white)
@@ -46,7 +46,7 @@ export default function Home() {
         style={{
           position: 'fixed',
           inset: 0,
-          background: theme === 'dark' ? '#080810' : '#f9fafb',
+          background: 'var(--background)',
           zIndex: -20,
           pointerEvents: 'none',
         }}
@@ -54,9 +54,9 @@ export default function Home() {
 
       {/* WebGL Neural Background — transparent, red neurons float on base */}
       <NeuralNoise
-        color={theme === 'dark' ? [0.92, 0.1, 0.1] : [0.80, 0.10, 0.10]}
-        opacity={theme === 'dark' ? 1 : 0.22}
-        speed={0.0007}
+        color={theme === 'dark' ? [0.9, 0.2, 0.4] : [0.80, 0.10, 0.10]}
+        opacity={theme === 'dark' ? 0.95 : 0.22}
+        speed={0.001}
       />
 
       {/* Navigation */}

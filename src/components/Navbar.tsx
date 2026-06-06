@@ -41,7 +41,7 @@ export default function Navbar({ theme, toggleTheme }: { theme: 'dark' | 'light'
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'glass py-4 shadow-lg' : 'py-6 bg-transparent'
+        scrolled ? 'bg-background/90 backdrop-blur-lg py-4 shadow-lg border-b border-foreground/10' : 'py-6 bg-transparent'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
@@ -53,7 +53,7 @@ export default function Navbar({ theme, toggleTheme }: { theme: 'dark' | 'light'
         </a>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex items-center gap-10">
+        <ul className="hidden md:flex items-center justify-end gap-10 order-last">
           {NAV_LINKS.map(({ label, href }) => (
             <li key={href}>
               <a
@@ -71,7 +71,7 @@ export default function Navbar({ theme, toggleTheme }: { theme: 'dark' | 'light'
         </ul>
 
         {/* Desktop Controls */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-4 ml-auto mr-10">
           <button
             onClick={toggleTheme}
             className="flex items-center justify-center w-11 h-11 rounded-full glass border border-red-500/25 text-foreground opacity-60 hover:opacity-100 hover:border-red-400 transition-all hover:bg-red-500/10 hover:scale-110 cursor-pointer"
@@ -92,7 +92,7 @@ export default function Navbar({ theme, toggleTheme }: { theme: 'dark' | 'light'
             href="https://github.com/AaryaShrivaastava"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-11 h-11 rounded-full glass border border-red-500/25 text-foreground opacity-60 hover:opacity-100 hover:border-red-400 transition-all hover:bg-red-500/10 hover:scale-110"
+            className="flex items-center justify-end w-11 h-11 rounded-full glass border border-red-500/25 text-foreground opacity-60 hover:opacity-100 hover:border-red-400 transition-all hover:bg-red-500/10 hover:scale-110"
             aria-label="GitHub Profile"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

@@ -102,15 +102,16 @@ export default function ExperienceSection() {
   const headerRef = useReveal();
 
   return (
-    <section id="experience" className="pt-36 pb-28 px-6">
-      <div className="max-w-6xl mx-auto flex flex-col items-center">
+    <section id="experience" className="pt-36 pb-28 px-6 min-h-screen flex items-center justify-center">
+      <div className="max-w-6xl mx-auto flex flex-col items-center justify-center w-full">
         <div ref={headerRef} className="reveal section-header text-center w-full">
           <p className="text-red-400 font-mono text-sm mb-3 tracking-widest uppercase">My Journey</p>
           <h2 className="text-4xl sm:text-5xl font-black text-foreground">
             Experience & <span className="gradient-text">Activities</span>
           </h2>
-          <p className="text-foreground opacity-55 mt-4 max-w-xl mx-auto">
-            From internships to open-source sprints, leadership roles to podcast hosting — here's what I've been up to.
+          <br/>
+          <p className="text-foreground opacity-55  flex justify-center">
+           From internships to open-source sprints, leadership roles to podcast hosting — here's what I've been up to.
           </p>
         </div>
 

@@ -22,14 +22,17 @@ export default function SkillsSection() {
   const headerRef = useReveal();
 
   return (
-    <section id="skills" className="py-28 px-6 section-bg">
+    <section id="skills" className="py-28 px-6 section-bg flex items-center justify-center">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         <div ref={headerRef} className="reveal section-header text-center w-full">
           <p className="text-red-400 font-mono text-sm mb-3 tracking-widest uppercase">What I Know</p>
+          
           <h2 className="text-4xl sm:text-5xl font-black text-foreground">
             Skills & <span className="gradient-text">Expertise</span>
+            
           </h2>
-          <p className="text-foreground opacity-55 mt-4 max-w-xl mx-auto">
+          <br/>
+          <p className="text-foreground opacity-55 ">
             A blend of programming fundamentals, modern tooling, and leadership skills built across coursework, open-source, and clubs.
           </p>
         </div>
@@ -39,7 +42,7 @@ export default function SkillsSection() {
             <RevealCard
               key={category}
               delay={i * 100}
-              className="card-3d glass rounded-2xl p-8 sm:p-10 border border-red-500/20 text-center flex flex-col items-center justify-between min-h-[250px] h-full overflow-hidden"
+              className="card-3d glass rounded-2xl p-8 sm:p-10 border border-red-500/20 text-center flex flex-col items-center justify-center min-h-[250px] h-full overflow-hidden"
             >
               <div className="flex flex-col items-center mb-5 w-full">
                 <span className="text-3xl mb-3">{CATEGORY_ICONS[category]}</span>

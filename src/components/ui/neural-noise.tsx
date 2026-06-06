@@ -1,68 +1,31 @@
+// @ts-nocheck
 'use client';
-
 import { useEffect, useRef } from 'react';
 
-interface NeuralNoiseProps {
-  color?: [number, number, number];
-  opacity?: number;
-  speed?: number;
-}
-
-export function NeuralNoise({
-  color = [0.92, 0.1, 0.1],
-  opacity = 0.92,
-  speed = 0.0007,
-}: NeuralNoiseProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const glRef = useRef<WebGLRenderingContext | null>(null);
-  const uniformsRef = useRef<Record<string, WebGLUniformLocation | null>>({});
-  const rafRef = useRef<number>(0);
-  const pointer = useRef({ x: 0, y: 0, tX: 0, tY: 0 });
+export function NeuralNoise({ color = [0.9, 0.2, 0.4], opacity = 0.95, speed = 0.001 }) {
+  const canvasRef = useRef(null);
+  const pointer = { x: 0, y: 0, tX: 0, tY: 0 };
+  let gl;
+  let uniforms;
 
   useEffect(() => {
-    const gl = initShader();
+    const devicePixelRatio = Math.min(window.devicePixelRatio, 2);
+    gl = initShader();
     if (!gl) return;
-    glRef.current = gl;
-
     const cleanupEvents = setupEvents();
     resizeCanvas();
-
     const resizeListener = () => resizeCanvas();
     window.addEventListener('resize', resizeListener);
-
-    // Initial uniform values
-    gl.uniform3f(uniformsRef.current.u_color, color[0], color[1], color[2]);
-    gl.uniform1f(uniformsRef.current.u_speed, speed);
-
-    rafRef.current = requestAnimationFrame(render);
-
+    gl.uniform3f(uniforms.u_color, color[0], color[1], color[2]);
+    gl.uniform1f(uniforms.u_speed, speed);
+    render();
     return () => {
-      cancelAnimationFrame(rafRef.current);
       window.removeEventListener('resize', resizeListener);
       cleanupEvents();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [color, speed]);
 
-  // Dynamic color uniform update
-  useEffect(() => {
-    const gl = glRef.current;
-    if (gl && uniformsRef.current.u_color) {
-      gl.useProgram(gl.getParameter(gl.CURRENT_PROGRAM));
-      gl.uniform3f(uniformsRef.current.u_color, color[0], color[1], color[2]);
-    }
-  }, [color[0], color[1], color[2]]);
-
-  // Dynamic speed uniform update
-  useEffect(() => {
-    const gl = glRef.current;
-    if (gl && uniformsRef.current.u_speed) {
-      gl.useProgram(gl.getParameter(gl.CURRENT_PROGRAM));
-      gl.uniform1f(uniformsRef.current.u_speed, speed);
-    }
-  }, [speed]);
-
-  function initShader(): WebGLRenderingContext | null {
+  function initShader() {
     const vsSource = `
       precision mediump float;
       varying vec2 vUv;
@@ -107,63 +70,38 @@ export function NeuralNoise({
         float t = u_speed * u_time;
         vec3 col = vec3(0.0);
         float noise = neuro_shape(uv, t, p);
-        noise = 1.6 * pow(noise, 2.4);
-        noise += pow(noise, 6.0);
-        noise = max(0.0, noise - 0.25);
-        noise = min(noise, 1.0);
-        float vignette = 1.0 - 0.35 * length(vUv - 0.5);
-        noise *= vignette;
-        col = u_color * noise * 2.0;
-        col = min(col, vec3(1.0));
+        noise = 1.2 * pow(noise, 3.0);
+        noise += pow(noise, 10.0);
+        noise = max(0.0, noise - 0.5);
+        noise *= (1.0 - length(vUv - 0.5));
+        col = u_color * noise;
         gl_FragColor = vec4(col, noise);
       }
     `;
-
     const canvasEl = canvasRef.current;
-    if (!canvasEl) return null;
-
-    const gl =
-      (canvasEl.getContext('webgl', { alpha: true, premultipliedAlpha: false }) ||
-        canvasEl.getContext('experimental-webgl', { alpha: true, premultipliedAlpha: false })) as WebGLRenderingContext | null;
+    gl = canvasEl.getContext('webgl') || canvasEl.getContext('experimental-webgl');
     if (!gl) {
       console.error('WebGL not supported');
       return null;
     }
-
-    // Enable alpha blending so transparent pixels show the background through
-    gl.enable(gl.BLEND);
-    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-    gl.clearColor(0, 0, 0, 0);
-
     const vertexShader = createShader(gl, vsSource, gl.VERTEX_SHADER);
     const fragmentShader = createShader(gl, fsSource, gl.FRAGMENT_SHADER);
-    if (!vertexShader || !fragmentShader) return null;
-
     const shaderProgram = createProgram(gl, vertexShader, fragmentShader);
     if (!shaderProgram) return null;
-
-    uniformsRef.current = getUniforms(gl, shaderProgram);
-
+    uniforms = getUniforms(gl, shaderProgram);
     const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
     const vertexBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
     gl.useProgram(shaderProgram);
-
     const positionLocation = gl.getAttribLocation(shaderProgram, 'a_position');
     gl.enableVertexAttribArray(positionLocation);
     gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
-
     return gl;
   }
 
-  function createShader(
-    gl: WebGLRenderingContext,
-    source: string,
-    type: number
-  ): WebGLShader | null {
+  function createShader(gl, source, type) {
     const shader = gl.createShader(type);
-    if (!shader) return null;
     gl.shaderSource(shader, source);
     gl.compileShader(shader);
     if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
@@ -174,13 +112,8 @@ export function NeuralNoise({
     return shader;
   }
 
-  function createProgram(
-    gl: WebGLRenderingContext,
-    vs: WebGLShader,
-    fs: WebGLShader
-  ): WebGLProgram | null {
+  function createProgram(gl, vs, fs) {
     const program = gl.createProgram();
-    if (!program) return null;
     gl.attachShader(program, vs);
     gl.attachShader(program, fs);
     gl.linkProgram(program);
@@ -191,76 +124,54 @@ export function NeuralNoise({
     return program;
   }
 
-  function getUniforms(
-    gl: WebGLRenderingContext,
-    program: WebGLProgram
-  ): Record<string, WebGLUniformLocation | null> {
-    const result: Record<string, WebGLUniformLocation | null> = {};
-    const uniformCount = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS) as number;
+  function getUniforms(gl, program) {
+    const uniforms = {};
+    const uniformCount = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
     for (let i = 0; i < uniformCount; i++) {
-      const info = gl.getActiveUniform(program, i);
-      if (info) result[info.name] = gl.getUniformLocation(program, info.name);
+      const uniformName = gl.getActiveUniform(program, i).name;
+      uniforms[uniformName] = gl.getUniformLocation(program, uniformName);
     }
-    return result;
+    return uniforms;
   }
 
   function render() {
-    const gl = glRef.current;
-    const uniforms = uniformsRef.current;
-    if (!gl) return;
-
     const currentTime = performance.now();
-    pointer.current.x += (pointer.current.tX - pointer.current.x) * 0.2;
-    pointer.current.y += (pointer.current.tY - pointer.current.y) * 0.2;
-
-    // Clear to fully transparent each frame so background shows through
-    gl.clear(gl.COLOR_BUFFER_BIT);
-
+    pointer.x += (pointer.tX - pointer.x) * 0.2;
+    pointer.y += (pointer.tY - pointer.y) * 0.2;
     gl.uniform1f(uniforms.u_time, currentTime);
-    gl.uniform2f(
-      uniforms.u_pointer_position,
-      pointer.current.x / window.innerWidth,
-      1 - pointer.current.y / window.innerHeight
-    );
+    gl.uniform2f(uniforms.u_pointer_position, pointer.x / window.innerWidth, 1 - pointer.y / window.innerHeight);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    rafRef.current = requestAnimationFrame(render);
+    requestAnimationFrame(render);
   }
 
   function resizeCanvas() {
-    const gl = glRef.current;
-    const uniforms = uniformsRef.current;
     const canvasEl = canvasRef.current;
-    if (!canvasEl || !gl) return;
-
-    const dpr = Math.min(window.devicePixelRatio, 2);
-    canvasEl.width = window.innerWidth * dpr;
-    canvasEl.height = window.innerHeight * dpr;
-
-    if (uniforms.u_ratio != null) {
+    const devicePixelRatio = Math.min(window.devicePixelRatio, 2);
+    canvasEl.width = window.innerWidth * devicePixelRatio;
+    canvasEl.height = window.innerHeight * devicePixelRatio;
+    if (uniforms && uniforms.u_ratio) {
       gl.uniform1f(uniforms.u_ratio, canvasEl.width / canvasEl.height);
     }
     gl.viewport(0, 0, canvasEl.width, canvasEl.height);
   }
 
   function setupEvents() {
-    const updatePointer = (x: number, y: number) => {
-      pointer.current.tX = x;
-      pointer.current.tY = y;
+    const updateMousePosition = (x, y) => {
+      pointer.tX = x;
+      pointer.tY = y;
     };
-    const onPointerMove = (e: PointerEvent) => updatePointer(e.clientX, e.clientY);
-    const onTouchMove = (e: TouchEvent) => {
-      if (e.targetTouches[0]) updatePointer(e.targetTouches[0].clientX, e.targetTouches[0].clientY);
+    const pointermove = (e) => updateMousePosition(e.clientX, e.clientY);
+    const touchmove = (e) => {
+      if (e.targetTouches[0]) updateMousePosition(e.targetTouches[0].clientX, e.targetTouches[0].clientY);
     };
-    const onClick = (e: MouseEvent) => updatePointer(e.clientX, e.clientY);
-
-    window.addEventListener('pointermove', onPointerMove);
-    window.addEventListener('touchmove', onTouchMove);
-    window.addEventListener('click', onClick);
-
+    const click = (e) => updateMousePosition(e.clientX, e.clientY);
+    window.addEventListener('pointermove', pointermove);
+    window.addEventListener('touchmove', touchmove);
+    window.addEventListener('click', click);
     return () => {
-      window.removeEventListener('pointermove', onPointerMove);
-      window.removeEventListener('touchmove', onTouchMove);
-      window.removeEventListener('click', onClick);
+      window.removeEventListener('pointermove', pointermove);
+      window.removeEventListener('touchmove', touchmove);
+      window.removeEventListener('click', click);
     };
   }
 

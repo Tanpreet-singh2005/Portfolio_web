@@ -34,14 +34,16 @@ export default function CertificationsSection() {
   const headerRef = useReveal();
 
   return (
-    <section id="certifications" className="py-28 px-6 section-bg">
+    <section id="certifications" className="py-28 px-6 section-bg flex items-center justify-center">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         <div ref={headerRef} className="reveal section-header text-center w-full">
           <p className="text-red-400 font-mono text-sm mb-3 tracking-widest uppercase">Credentials</p>
+          <br/>
           <h2 className="text-4xl sm:text-5xl font-black text-foreground">
             Certifications & <span className="gradient-text">Learning</span>
           </h2>
-          <p className="text-foreground opacity-55 mt-4 max-w-xl mx-auto">
+          <br/>
+          <p className="text-foreground opacity-55 ">
             Continuous learning from premier institutions — IIT Madras, IIT Kharagpur, and industry-recognized programs.
           </p>
         </div>
