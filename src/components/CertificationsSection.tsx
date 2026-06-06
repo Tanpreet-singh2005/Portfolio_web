@@ -1,33 +1,7 @@
 'use client';
 import { useReveal } from '@/hooks/useReveal';
 import { RevealCard } from '@/components/RevealCard';
-function App() {
-  const containerStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: '100vh',
-    backgroundColor: '#f3f4f6'
-  };
 
-  const sectionStyle = {
-    maxWidth: '500px',
-    width: '100%',
-    padding: '24px',
-    backgroundColor: '#ffffff'
-  };
-
-  return (
-    <div style={containerStyle}>
-      <section style={sectionStyle}>
-        <h2>Centered Section</h2>
-        <p>Centered using Flexbox via React inline styles.</p>
-      </section>
-    </div>
-  );
-}
-
-export default App;
 const CERTS = [
 
   {
