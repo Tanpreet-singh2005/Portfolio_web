@@ -9,6 +9,7 @@ import SkillsSection from "@/components/SkillsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import CertificationsSection from "@/components/CertificationsSection";
 import ResumeSection from "@/components/ResumeSection";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -69,6 +70,7 @@ export default function Home() {
       <ExperienceSection />
       <CertificationsSection />
       <ResumeSection />
+      <ContactSection />
       <Footer />
     </main>
   );
