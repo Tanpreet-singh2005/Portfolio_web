@@ -8,7 +8,6 @@ import AboutSection from "@/components/AboutSection";
 import SkillsSection from "@/components/SkillsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import CertificationsSection from "@/components/CertificationsSection";
-import ResumeSection from "@/components/ResumeSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
@@ -55,8 +54,8 @@ export default function Home() {
 
       {/* WebGL Neural Background — transparent, red neurons float on base */}
       <NeuralNoise
-        color={theme === 'dark' ? [0.9, 0.2, 0.4] : [0.80, 0.10, 0.10]}
-        opacity={theme === 'dark' ? 0.95 : 0.22}
+        color={[0.9, 0.2, 0.4]}
+        opacity={0.95}
         speed={0.001}
       />
 
@@ -69,7 +68,6 @@ export default function Home() {
       <SkillsSection />
       <ExperienceSection />
       <CertificationsSection />
-      <ResumeSection />
       <ContactSection />
       <Footer />
     </main>

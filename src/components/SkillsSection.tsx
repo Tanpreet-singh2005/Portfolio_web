@@ -1,6 +1,8 @@
 'use client';
+import React from 'react';
 import { useReveal } from '@/hooks/useReveal';
 import { RevealCard } from '@/components/RevealCard';
+import { AppIcon, Icons } from '@/components/AppIcon';
 
 const SKILLS = {
   'Languages': ['C', 'C++', 'Python', 'JavaScript', 'TypeScript', 'SQL'],
@@ -10,12 +12,12 @@ const SKILLS = {
   'Soft Skills': ['PR & Outreach', 'Event Management', 'Public Speaking', 'Finance Planning', 'Team Leadership'],
 };
 
-const CATEGORY_ICONS: Record<string, string> = {
-  'Languages': '⚡',
-  'Core CS': '🧠',
-  'Web & Tools': '🌐',
-  'AI / ML': '🤖',
-  'Soft Skills': '🤝',
+const CATEGORY_META: Record<string, { color: string; icon: React.FC }> = {
+  'Languages':   { color: 'bg-violet-600',   icon: Icons.Code },
+  'Core CS':     { color: 'bg-blue-600',      icon: Icons.Cpu },
+  'Web & Tools': { color: 'bg-teal-500',      icon: Icons.Globe },
+  'AI / ML':     { color: 'bg-indigo-500',    icon: Icons.Sparkles },
+  'Soft Skills': { color: 'bg-rose-500',      icon: Icons.Users },
 };
 
 export default function SkillsSection() {
@@ -38,38 +40,40 @@ export default function SkillsSection() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10">
-          {Object.entries(SKILLS).map(([category, skills], i) => (
-            <RevealCard
-              key={category}
-              delay={i * 100}
-              className="card-3d glass rounded-2xl p-8 sm:p-10 border border-red-500/20 text-center flex flex-col items-center justify-center min-h-[250px] h-full overflow-hidden"
-            >
-              <div className="flex flex-col items-center mb-5 w-full">
-                <span className="text-3xl mb-3">{CATEGORY_ICONS[category]}</span>
-                <h3 className="text-foreground font-bold text-lg">{category}</h3>
-              </div>
-              <div className="flex flex-wrap justify-center gap-2.5 mt-auto">
-                {skills.map((skill) => (
-                  <span key={skill} className="skill-pill px-3.5 py-1.5 rounded-full text-xs text-foreground font-semibold cursor-default">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </RevealCard>
-          ))}
+          {Object.entries(SKILLS).map(([category, skills], i) => {
+            const meta = CATEGORY_META[category];
+            const Icon = meta.icon;
+            return (
+              <RevealCard
+                key={category}
+                delay={i * 100}
+                className="card-3d glass rounded-2xl p-8 sm:p-10 border border-red-500/20 text-center flex flex-col items-center justify-center min-h-[250px] h-full overflow-hidden"
+              >
+                <div className="flex flex-col items-center mb-5 w-full">
+                  <AppIcon color={meta.color} size="md">
+                    <Icon />
+                  </AppIcon>
+                  <h3 className="text-foreground font-bold text-lg">{category}</h3>
+                </div>
+                <div className="flex flex-wrap justify-center gap-2.5 mt-auto">
+                  {skills.map((skill) => (
+                    <span key={skill} className="skill-pill px-5 py-2 rounded-full text-xs text-foreground font-semibold cursor-default">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </RevealCard>
+            );
+          })}
 
           {/* HackerRank star card */}
           <RevealCard
             delay={600}
             className="card-3d glass rounded-2xl p-8 sm:p-10 border border-yellow-500/30 flex flex-col items-center justify-center text-center col-span-full lg:col-span-1 min-h-[250px]"
           >
-            <div className="flex gap-1 mb-3 justify-center animate-float">
-              {[...Array(4)].map((_, i) => (
-                <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              ))}
-            </div>
+            <AppIcon color="bg-yellow-500" size="md">
+              <Icons.Star />
+            </AppIcon>
             <h3 className="text-foreground font-bold text-lg mb-1">HackerRank 4★ C++</h3>
             <p className="text-foreground opacity-55 text-sm mb-5">Ranked among top competitive programmers</p>
             <a

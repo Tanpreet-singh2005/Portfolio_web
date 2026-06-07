@@ -1,34 +1,10 @@
 {
   "pages": {
-    "/_app": [
-      "static/chunks/0-qa_next_dist_compiled_20jefau._.js",
-      "static/chunks/0-qa_next_dist_shared_lib_0e6bx29._.js",
-      "static/chunks/0-qa_next_dist_client_1rzsy58._.js",
-      "static/chunks/0-qa_next_dist_1r-wpba._.js",
-      "static/chunks/0-qa_next_app_1gz69fv.js",
-      "static/chunks/[next]_entry_page-loader_ts_1b2qord._.js",
-      "static/chunks/0-qa_react-dom_1fgx9rq._.js",
-      "static/chunks/0-qa_1s6eysj._.js",
-      "static/chunks/[root-of-the-server]__1ml_0b2._.js",
-      "static/chunks/Documents_Aarya-Shrivaastava_pages__app_0du2_q-._.js",
-      "static/chunks/turbopack-Documents_Aarya-Shrivaastava_pages__app_19z1p24._.js"
-    ],
-    "/_error": [
-      "static/chunks/0-qa_next_dist_compiled_20jefau._.js",
-      "static/chunks/0-qa_next_dist_shared_lib_1y74rrk._.js",
-      "static/chunks/0-qa_next_dist_client_1rzsy58._.js",
-      "static/chunks/0-qa_next_dist_0ysha7j._.js",
-      "static/chunks/[next]_entry_page-loader_ts_0jxwbk3._.js",
-      "static/chunks/0-qa_react-dom_1fgx9rq._.js",
-      "static/chunks/0-qa_1s6eysj._.js",
-      "static/chunks/[root-of-the-server]__0zg30y3._.js",
-      "static/chunks/Documents_Aarya-Shrivaastava_pages__error_0du2_q-._.js",
-      "static/chunks/turbopack-Documents_Aarya-Shrivaastava_pages__error_03cvi63._.js"
-    ]
+    "/_app": []
   },
   "devFiles": [],
   "polyfillFiles": [
-    "static/chunks/0-qa_next_dist_build_polyfills_polyfill-nomodule.js"
+    "static/chunks/1d_e_next_dist_build_polyfills_polyfill-nomodule.js"
   ],
   "lowPriorityFiles": [
     "static/development/_buildManifest.js",
@@ -36,15 +12,15 @@
     "static/development/_clientMiddlewareManifest.js"
   ],
   "rootMainFiles": [
-    "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_12bmegv._.js",
-    "static/chunks/0-qa_next_dist_compiled_next-devtools_index_1e2ays3.js",
-    "static/chunks/0-qa_next_dist_compiled_react-dom_0gh4q20._.js",
-    "static/chunks/0-qa_next_dist_compiled_react-server-dom-turbopack_1rkozo8._.js",
-    "static/chunks/0-qa_next_dist_compiled_1aij-c1._.js",
-    "static/chunks/0-qa_next_dist_client_0xmzf6w._.js",
-    "static/chunks/0-qa_next_dist_0yy3jpp._.js",
-    "static/chunks/0-qa_@swc_helpers_cjs_1omgcn_._.js",
-    "static/chunks/Documents_Aarya-Shrivaastava_1anvha4._.js",
-    "static/chunks/turbopack-Documents_Aarya-Shrivaastava_15repde._.js"
+    "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_07gw6g9._.js",
+    "static/chunks/1d_e_next_dist_compiled_next-devtools_index_0e6lywt.js",
+    "static/chunks/1d_e_next_dist_compiled_react-dom_06kcxj3._.js",
+    "static/chunks/1d_e_next_dist_compiled_react-server-dom-turbopack_1-93xnw._.js",
+    "static/chunks/1d_e_next_dist_compiled_19d9t63._.js",
+    "static/chunks/1d_e_next_dist_client_179n8mf._.js",
+    "static/chunks/1d_e_next_dist_1f-9t6i._.js",
+    "static/chunks/1d_e_@swc_helpers_cjs_0b3go6j._.js",
+    "static/chunks/Desktop_Aarya-Shrivaastava_1anvha4._.js",
+    "static/chunks/turbopack-Desktop_Aarya-Shrivaastava_1-vq45a._.js"
   ]
 }

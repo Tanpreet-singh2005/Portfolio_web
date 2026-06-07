@@ -1,6 +1,8 @@
 'use client';
+import React from 'react';
 import { useReveal } from '@/hooks/useReveal';
 import { RevealCard } from '@/components/RevealCard';
+import { AppIcon, Icons } from '@/components/AppIcon';
 
 interface Experience {
   role: string;
@@ -9,7 +11,8 @@ interface Experience {
   duration: string;
   description: string;
   tags: string[];
-  icon: string;
+  iconColor: string;
+  icon: React.FC;
   highlight?: boolean;
 }
 
@@ -22,7 +25,8 @@ const EXPERIENCES: Experience[] = [
     description:
       'Analyzed the technical architecture of a K-Class platform serving 1M+ students. Documented scalable development practices and backend workflows using C++ and Python.',
     tags: ['C++', 'Python', 'Backend', 'Architecture'],
-    icon: '💼',
+    iconColor: 'bg-indigo-600',
+    icon: Icons.Briefcase,
     highlight: true,
   },
   {
@@ -33,7 +37,8 @@ const EXPERIENCES: Experience[] = [
     description:
       'Driving member engagement, forging partnerships, and promoting hands-on AI workshops and hackathons across the university community.',
     tags: ['Leadership', 'AI', 'Community', 'Events'],
-    icon: '🤖',
+    iconColor: 'bg-violet-600',
+    icon: Icons.Bot,
     highlight: true,
   },
   {
@@ -44,7 +49,8 @@ const EXPERIENCES: Experience[] = [
     description:
       'Planning budgets, forecasting expenses, and ensuring the financial sustainability of entrepreneurial events and startup competitions.',
     tags: ['Finance', 'Sponsorship', 'Entrepreneurship'],
-    icon: '💰',
+    iconColor: 'bg-emerald-600',
+    icon: Icons.Coins,
   },
   {
     role: 'Open Source Contributor',
@@ -54,7 +60,8 @@ const EXPERIENCES: Experience[] = [
     description:
       'Actively contributing to open-source projects during SWOC, collaborating with developers globally to ship meaningful code.',
     tags: ['Open Source', 'Collaboration', 'Git'],
-    icon: '🌐',
+    iconColor: 'bg-teal-600',
+    icon: Icons.GitMerge,
   },
   {
     role: 'Open Source Contributor',
@@ -64,7 +71,8 @@ const EXPERIENCES: Experience[] = [
     description:
       'Contributed to multiple repositories during GirlScript Summer of Code, enhancing features and fixing bugs.',
     tags: ['Open Source', 'GSSoC', 'Community'],
-    icon: '👩‍💻',
+    iconColor: 'bg-pink-600',
+    icon: Icons.Code,
   },
   {
     role: 'Hacktoberfest Contributor',
@@ -74,7 +82,8 @@ const EXPERIENCES: Experience[] = [
     description:
       'Participated in Hacktoberfest, making quality pull requests to open-source projects and earning the official badge.',
     tags: ['Open Source', 'Hacktoberfest', 'Git'],
-    icon: '🎃',
+    iconColor: 'bg-orange-600',
+    icon: Icons.GitMerge,
   },
   {
     role: 'Event Management Team',
@@ -84,7 +93,8 @@ const EXPERIENCES: Experience[] = [
     description:
       'Organizing social-impact initiatives, coordinating logistics, and fostering community growth across NSS events.',
     tags: ['Events', 'Community', 'Social Impact'],
-    icon: '🌱',
+    iconColor: 'bg-green-600',
+    icon: Icons.Heart,
   },
   {
     role: 'Podcast Team Member',
@@ -94,7 +104,8 @@ const EXPERIENCES: Experience[] = [
     description:
       "Podcast host and team member at ECell VIT Bhopal University's Podcast Team, interviewing entrepreneurs and startup founders.",
     tags: ['Podcast', 'Entrepreneurship', 'Communication'],
-    icon: '🎙️',
+    iconColor: 'bg-rose-600',
+    icon: Icons.Mic,
   },
 ];
 
@@ -110,44 +121,49 @@ export default function ExperienceSection() {
             Experience & <span className="gradient-text">Activities</span>
           </h2>
           <br/>
-          <p className="text-foreground opacity-55  flex justify-center">
+          <p className="text-foreground opacity-55 flex justify-center">
            From internships to open-source sprints, leadership roles to podcast hosting — here's what I've been up to.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 w-full mt-10">
-          {EXPERIENCES.map((exp, i) => (
-            <RevealCard key={i} delay={Math.min(i * 80, 400)}>
-              <div className={`experience-card group glass rounded-2xl p-8 sm:p-10 border transition-all duration-300 cursor-pointer text-center flex flex-col items-center justify-center h-full ${exp.highlight ? 'border-red-500/40 glow-rose' : 'border-white/10'}`}>
-                <span className="text-3xl mb-3">{exp.icon}</span>
-                <h3 className="text-foreground font-bold text-lg sm:text-xl">{exp.role}</h3>
-                <p className="gradient-text font-semibold text-sm mt-1">{exp.org}</p>
+          {EXPERIENCES.map((exp, i) => {
+            const Icon = exp.icon;
+            return (
+              <RevealCard key={i} delay={Math.min(i * 80, 400)}>
+                <div className={`experience-card group glass rounded-2xl p-8 sm:p-10 border transition-all duration-300 cursor-pointer text-center flex flex-col items-center justify-center h-full ${exp.highlight ? 'border-red-500/40 glow-rose' : 'border-white/10'}`}>
+                  <AppIcon color={exp.iconColor} size="md">
+                    <Icon />
+                  </AppIcon>
+                  <h3 className="text-foreground font-bold text-lg sm:text-xl">{exp.role}</h3>
+                  <p className="gradient-text font-semibold text-sm mt-1">{exp.org}</p>
 
-                <div className="experience-card-content w-full">
-                  <div className="experience-card-inner">
-                    <div className="pt-5 mt-5 border-t border-white/10 flex flex-col items-center gap-3">
-                      <div className="flex gap-4 text-xs text-foreground opacity-50 justify-center">
-                        <span>{exp.period}</span>
-                        <span>•</span>
-                        <span className="text-red-400 opacity-100 font-medium">{exp.duration}</span>
-                      </div>
-                      <p className="text-foreground opacity-65 text-sm leading-relaxed max-w-xl mx-auto">{exp.description}</p>
-                      <div className="flex flex-wrap justify-center gap-2 mt-2">
-                        {exp.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-xs px-2.5 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20"
-                          >
-                            {tag}
-                          </span>
-                        ))}
+                  <div className="experience-card-content w-full">
+                    <div className="experience-card-inner">
+                      <div className="pt-5 mt-5 border-t border-white/10 flex flex-col items-center gap-3">
+                        <div className="flex gap-4 text-xs text-foreground opacity-50 justify-center">
+                          <span>{exp.period}</span>
+                          <span>•</span>
+                          <span className="text-red-400 opacity-100 font-medium">{exp.duration}</span>
+                        </div>
+                        <p className="text-foreground opacity-65 text-sm leading-relaxed max-w-xl mx-auto">{exp.description}</p>
+                        <div className="flex flex-wrap justify-center gap-2 mt-2">
+                          {exp.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="text-xs px-4 py-1.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </RevealCard>
-          ))}
+              </RevealCard>
+            );
+          })}
         </div>
       </div>
     </section>
