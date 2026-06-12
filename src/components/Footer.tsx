@@ -2,7 +2,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="py-16 px-8" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+    <footer className="pt-20 pb-16 px-8" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       <div className="max-w-6xl mx-auto flex flex-col">
 
         {/* Top Section: Multi-column Layout */}
@@ -22,10 +22,10 @@ export default function Footer() {
             </p>
             {/* Replace with your actual email address */}
             <a
-              href="mailto:hello@example.com"
+              href="mailto:aarya.shrivaastava1026@gmail.com"
               className="mt-2 text-sm font-medium text-foreground hover:text-red-400 transition-colors flex items-center gap-2 group"
             >
-              hello@example.com
+              aarya.shrivaastava1026@gmail.com
               <svg
                 className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 fill="none"

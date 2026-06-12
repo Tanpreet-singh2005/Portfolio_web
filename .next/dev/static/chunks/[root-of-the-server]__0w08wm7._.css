@@ -780,6 +780,7 @@
     --radius-lg: .5rem;
     --radius-xl: .75rem;
     --radius-2xl: 1rem;
+    --animate-spin: spin 1s linear infinite;
     --animate-pulse: pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;
     --blur-lg: 16px;
     --blur-xl: 24px;
@@ -1187,6 +1188,10 @@
     margin-top: calc(var(--spacing) * 2);
   }
 
+  .mt-3 {
+    margin-top: calc(var(--spacing) * 3);
+  }
+
   .mt-5 {
     margin-top: calc(var(--spacing) * 5);
   }
@@ -1245,6 +1250,10 @@
 
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
+  }
+
+  .mb-14 {
+    margin-bottom: calc(var(--spacing) * 14);
   }
 
   .mb-15 {
@@ -1510,6 +1519,10 @@
     animation: var(--animate-pulse);
   }
 
+  .animate-spin {
+    animation: var(--animate-spin);
+  }
+
   .cursor-default {
     cursor: default;
   }
@@ -1584,6 +1597,10 @@
 
   .gap-6 {
     gap: calc(var(--spacing) * 6);
+  }
+
+  .gap-7 {
+    gap: calc(var(--spacing) * 7);
   }
 
   .gap-8 {
@@ -1903,8 +1920,16 @@
     padding: calc(var(--spacing) * 8);
   }
 
+  .p-10 {
+    padding: calc(var(--spacing) * 10);
+  }
+
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
+  }
+
+  .px-3 {
+    padding-inline: calc(var(--spacing) * 3);
   }
 
   .px-4 {
@@ -1959,6 +1984,10 @@
     padding-top: calc(var(--spacing) * 5);
   }
 
+  .pt-20 {
+    padding-top: calc(var(--spacing) * 20);
+  }
+
   .pt-32 {
     padding-top: calc(var(--spacing) * 32);
   }
@@ -1967,12 +1996,24 @@
     padding-top: calc(var(--spacing) * 36);
   }
 
+  .pt-44 {
+    padding-top: calc(var(--spacing) * 44);
+  }
+
+  .pb-16 {
+    padding-bottom: calc(var(--spacing) * 16);
+  }
+
   .pb-24 {
     padding-bottom: calc(var(--spacing) * 24);
   }
 
   .pb-28 {
     padding-bottom: calc(var(--spacing) * 28);
+  }
+
+  .pb-32 {
+    padding-bottom: calc(var(--spacing) * 32);
   }
 
   .text-center {
@@ -2116,6 +2157,10 @@
 
   .opacity-0 {
     opacity: 0;
+  }
+
+  .opacity-25 {
+    opacity: .25;
   }
 
   .opacity-30 {
@@ -2378,6 +2423,14 @@
     outline-style: none;
   }
 
+  .disabled\:cursor-not-allowed:disabled {
+    cursor: not-allowed;
+  }
+
+  .disabled\:opacity-50:disabled {
+    opacity: .5;
+  }
+
   @media (min-width: 40rem) {
     .sm\:flex {
       display: flex;
@@ -2441,6 +2494,12 @@
   @media (min-width: 40rem) {
     .sm\:p-12 {
       padding: calc(var(--spacing) * 12);
+    }
+  }
+
+  @media (min-width: 40rem) {
+    .sm\:p-14 {
+      padding: calc(var(--spacing) * 14);
     }
   }
 
@@ -3148,6 +3207,12 @@ section[id] {
   syntax: "*";
   inherits: false;
   initial-value: 1;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes pulse {

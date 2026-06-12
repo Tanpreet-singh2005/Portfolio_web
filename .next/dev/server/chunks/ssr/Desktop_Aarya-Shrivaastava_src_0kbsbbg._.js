@@ -3058,15 +3058,55 @@ __turbopack_context__.s([
     ()=>ContactSection
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Aarya-Shrivaastava/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Aarya-Shrivaastava/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$src$2f$hooks$2f$useReveal$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Aarya-Shrivaastava/src/hooks/useReveal.ts [app-ssr] (ecmascript)");
 'use client';
 ;
 ;
+;
+const GOOGLE_SHEET_URL = ("TURBOPACK compile-time value", "https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec") || '';
 function ContactSection() {
     const ref = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$src$2f$hooks$2f$useReveal$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useReveal"])();
+    const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({
+        name: '',
+        email: '',
+        message: ''
+    });
+    const [status, setStatus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('idle');
+    const handleChange = (e)=>{
+        setFormData((prev)=>({
+                ...prev,
+                [e.target.id]: e.target.value
+            }));
+    };
+    const handleSubmit = async (e)=>{
+        e.preventDefault();
+        if (!formData.name || !formData.email || !formData.message) return;
+        setStatus('sending');
+        try {
+            await fetch(GOOGLE_SHEET_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            setStatus('success');
+            setFormData({
+                name: '',
+                email: '',
+                message: ''
+            });
+            setTimeout(()=>setStatus('idle'), 4000);
+        } catch  {
+            setStatus('error');
+            setTimeout(()=>setStatus('idle'), 4000);
+        }
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         id: "contact",
-        className: "pt-32 pb-24 px-6 flex items-center justify-center relative z-100",
+        className: "pt-44 pb-32 px-6 flex items-center justify-center relative z-10",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "max-w-4xl mx-auto text-center flex flex-col items-center w-full",
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3074,11 +3114,11 @@ function ContactSection() {
                 className: "reveal w-full flex flex-col items-center",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-red-400 font-mono text-sm mb-3 tracking-widest uppercase",
+                        className: "text-red-400 font-mono text-sm mb-4 tracking-widest uppercase",
                         children: "Let's Connect"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                        lineNumber: 12,
+                        lineNumber: 42,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -3087,7 +3127,7 @@ function ContactSection() {
                             "Have a project in mind?",
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                 fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                lineNumber: 15,
+                                lineNumber: 45,
                                 columnNumber: 36
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3095,35 +3135,35 @@ function ContactSection() {
                                 children: "Let's make it happen"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                lineNumber: 16,
+                                lineNumber: 46,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                        lineNumber: 14,
+                        lineNumber: 44,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-foreground opacity-60 text-base leading-relaxed mb-12 max-w-xl mx-auto",
+                        className: "text-foreground opacity-60 text-base leading-relaxed mb-14 max-w-xl mx-auto",
                         children: "I'm always open to discussing new projects, internships, freelance work, or opportunities to collaborate."
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                        lineNumber: 19,
+                        lineNumber: 49,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "glass rounded-[2rem] p-8 sm:p-12 border border-white/10 shadow-xl relative overflow-hidden w-full max-w-2xl text-left backdrop-blur-xl bg-black/50 dark:bg-black/60",
+                        className: "glass rounded-[2rem] p-10 sm:p-14 border border-white/10 shadow-xl relative overflow-hidden w-full max-w-2xl text-left backdrop-blur-xl bg-black/50 dark:bg-black/60",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
-                                className: "flex flex-col gap-6",
-                                onSubmit: (e)=>e.preventDefault(),
+                                className: "flex flex-col gap-7",
+                                onSubmit: handleSubmit,
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "grid grid-cols-1 sm:grid-cols-2 gap-6",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex flex-col gap-2",
+                                                className: "flex flex-col gap-2.5",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                         htmlFor: "name",
@@ -3131,27 +3171,30 @@ function ContactSection() {
                                                         children: "Name"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                        lineNumber: 28,
+                                                        lineNumber: 60,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                         type: "text",
                                                         id: "name",
+                                                        required: true,
+                                                        value: formData.name,
+                                                        onChange: handleChange,
                                                         placeholder: "Your name",
-                                                        className: "w-full bg-white/5 border border-white/10 rounded-xl p-3.5 text-foreground placeholder-foreground/40 focus:outline-none focus:border-red-400 focus:bg-white/10 transition-all"
+                                                        className: "w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-foreground placeholder-foreground/40 focus:outline-none focus:border-red-400 focus:bg-white/10 transition-all text-sm"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                        lineNumber: 29,
+                                                        lineNumber: 61,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                lineNumber: 27,
+                                                lineNumber: 59,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex flex-col gap-2",
+                                                className: "flex flex-col gap-2.5",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                         htmlFor: "email",
@@ -3159,33 +3202,36 @@ function ContactSection() {
                                                         children: "Email"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                        lineNumber: 37,
+                                                        lineNumber: 72,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                         type: "email",
                                                         id: "email",
+                                                        required: true,
+                                                        value: formData.email,
+                                                        onChange: handleChange,
                                                         placeholder: "your@email.com",
-                                                        className: "w-full bg-white/5 border border-white/10 rounded-xl p-3.5 text-foreground placeholder-foreground/40 focus:outline-none focus:border-red-400 focus:bg-white/10 transition-all"
+                                                        className: "w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-foreground placeholder-foreground/40 focus:outline-none focus:border-red-400 focus:bg-white/10 transition-all text-sm"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                        lineNumber: 38,
+                                                        lineNumber: 73,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                lineNumber: 36,
+                                                lineNumber: 71,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                        lineNumber: 26,
+                                        lineNumber: 58,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex flex-col gap-2",
+                                        className: "flex flex-col gap-2.5",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                 htmlFor: "message",
@@ -3193,297 +3239,349 @@ function ContactSection() {
                                                 children: "Message"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                lineNumber: 48,
+                                                lineNumber: 86,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
                                                 id: "message",
-                                                rows: 4,
+                                                rows: 5,
+                                                required: true,
+                                                value: formData.message,
+                                                onChange: handleChange,
                                                 placeholder: "Tell me about your project...",
-                                                className: "w-full bg-white/5 border border-white/10 rounded-xl p-3.5 text-foreground placeholder-foreground/40 focus:outline-none focus:border-red-400 focus:bg-white/10 transition-all resize-none"
+                                                className: "w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-foreground placeholder-foreground/40 focus:outline-none focus:border-red-400 focus:bg-white/10 transition-all resize-none text-sm"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                lineNumber: 49,
+                                                lineNumber: 87,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                        lineNumber: 47,
+                                        lineNumber: 85,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         type: "submit",
-                                        className: "w-full bg-foreground text-background font-semibold py-4 rounded-xl mt-2 flex items-center justify-center gap-2 hover:opacity-90 transition-opacity",
-                                        children: [
-                                            "Send Message",
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                className: "w-5 h-5",
-                                                fill: "none",
-                                                stroke: "currentColor",
-                                                strokeWidth: 2,
-                                                viewBox: "0 0 24 24",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    strokeLinecap: "round",
-                                                    strokeLinejoin: "round",
-                                                    d: "M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"
+                                        disabled: status === 'sending',
+                                        className: "w-full btn-shimmer text-white font-semibold py-4 rounded-xl mt-3 flex items-center justify-center gap-2.5 hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg",
+                                        children: status === 'sending' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    className: "w-5 h-5 animate-spin",
+                                                    fill: "none",
+                                                    viewBox: "0 0 24 24",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
+                                                            className: "opacity-25",
+                                                            cx: "12",
+                                                            cy: "12",
+                                                            r: "10",
+                                                            stroke: "currentColor",
+                                                            strokeWidth: "4"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                                            lineNumber: 106,
+                                                            columnNumber: 23
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            className: "opacity-75",
+                                                            fill: "currentColor",
+                                                            d: "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                                            lineNumber: 107,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                                    lineNumber: 105,
+                                                    columnNumber: 21
+                                                }, this),
+                                                "Sending..."
+                                            ]
+                                        }, void 0, true) : status === 'success' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    className: "w-5 h-5",
+                                                    fill: "none",
+                                                    stroke: "currentColor",
+                                                    strokeWidth: 2,
+                                                    viewBox: "0 0 24 24",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        strokeLinecap: "round",
+                                                        strokeLinejoin: "round",
+                                                        d: "M5 13l4 4L19 7"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                                        lineNumber: 114,
+                                                        columnNumber: 23
+                                                    }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                    lineNumber: 63,
-                                                    columnNumber: 19
+                                                    lineNumber: 113,
+                                                    columnNumber: 21
+                                                }, this),
+                                                "Message Sent!"
+                                            ]
+                                        }, void 0, true) : status === 'error' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    className: "w-5 h-5",
+                                                    fill: "none",
+                                                    stroke: "currentColor",
+                                                    strokeWidth: 2,
+                                                    viewBox: "0 0 24 24",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        strokeLinecap: "round",
+                                                        strokeLinejoin: "round",
+                                                        d: "M6 18L18 6M6 6l12 12"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                                        lineNumber: 121,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                                    lineNumber: 120,
+                                                    columnNumber: 21
+                                                }, this),
+                                                "Failed — Try Again"
+                                            ]
+                                        }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                            children: [
+                                                "Send Message",
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    className: "w-5 h-5",
+                                                    fill: "none",
+                                                    stroke: "currentColor",
+                                                    strokeWidth: 2,
+                                                    viewBox: "0 0 24 24",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        strokeLinecap: "round",
+                                                        strokeLinejoin: "round",
+                                                        d: "M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                                        lineNumber: 129,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                                    lineNumber: 128,
+                                                    columnNumber: 21
                                                 }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                lineNumber: 62,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
+                                            ]
+                                        }, void 0, true)
+                                    }, void 0, false, {
                                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                        lineNumber: 57,
+                                        lineNumber: 98,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                lineNumber: 25,
+                                lineNumber: 57,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center gap-4 my-8 relative",
+                                className: "flex items-center gap-4 mt-12 mb-8",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex-1 h-px bg-white/10"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                        lineNumber: 69,
+                                        lineNumber: 138,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "text-xs font-mono tracking-wider text-foreground opacity-40 px-2 uppercase",
+                                        className: "text-xs font-mono tracking-wider text-foreground opacity-40 px-3 uppercase",
                                         children: "or reach out via"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                        lineNumber: 70,
+                                        lineNumber: 139,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex-1 h-px bg-white/10"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                        lineNumber: 71,
+                                        lineNumber: 140,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                lineNumber: 68,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
-                                fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                lineNumber: 73,
+                                lineNumber: 137,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "grid grid-cols-1 sm:grid-cols-3 gap-4",
+                                className: "flex items-center justify-center gap-4",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                         href: "https://github.com/AaryaShrivaastava",
                                         target: "_blank",
                                         rel: "noopener noreferrer",
-                                        className: "flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-red-400 hover:bg-red-500/10 transition-all text-sm font-medium group",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                className: "w-4 h-4 opacity-70 group-hover:opacity-100 group-hover:text-red-400 transition-all",
-                                                fill: "currentColor",
-                                                viewBox: "0 0 24 24",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    d: "M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                    lineNumber: 77,
-                                                    columnNumber: 157
-                                                }, this)
+                                        "aria-label": "GitHub",
+                                        className: "w-12 h-12 flex items-center justify-center rounded-full glass border border-white/10 text-foreground opacity-60 hover:opacity-100 hover:border-red-400 hover:bg-red-500/10 hover:scale-110 transition-all",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                            className: "w-5 h-5",
+                                            fill: "currentColor",
+                                            viewBox: "0 0 24 24",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                d: "M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                lineNumber: 77,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "group-hover:text-red-400 transition-colors",
-                                                children: "GitHub"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                lineNumber: 78,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                className: "w-3 h-3 opacity-30 ml-1 group-hover:text-red-400",
-                                                fill: "none",
-                                                stroke: "currentColor",
-                                                viewBox: "0 0 24 24",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    strokeLinecap: "round",
-                                                    strokeLinejoin: "round",
-                                                    strokeWidth: 2,
-                                                    d: "M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                    lineNumber: 79,
-                                                    columnNumber: 137
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                lineNumber: 79,
-                                                columnNumber: 17
+                                                lineNumber: 154,
+                                                columnNumber: 19
                                             }, this)
-                                        ]
-                                    }, void 0, true, {
+                                        }, void 0, false, {
+                                            fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                            lineNumber: 153,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
                                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                        lineNumber: 76,
+                                        lineNumber: 146,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                         href: "https://www.linkedin.com/in/aarya-shrivaastava-7b198b2a3",
                                         target: "_blank",
                                         rel: "noopener noreferrer",
-                                        className: "flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-red-400 hover:bg-red-500/10 transition-all text-sm font-medium group",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                className: "w-4 h-4 opacity-70 group-hover:opacity-100 group-hover:text-red-400 transition-all",
-                                                fill: "currentColor",
-                                                viewBox: "0 0 24 24",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    d: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                    lineNumber: 82,
-                                                    columnNumber: 157
-                                                }, this)
+                                        "aria-label": "LinkedIn",
+                                        className: "w-12 h-12 flex items-center justify-center rounded-full glass border border-white/10 text-foreground opacity-60 hover:opacity-100 hover:border-red-400 hover:bg-red-500/10 hover:scale-110 transition-all",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                            className: "w-5 h-5",
+                                            fill: "currentColor",
+                                            viewBox: "0 0 24 24",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                d: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                lineNumber: 82,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "group-hover:text-red-400 transition-colors",
-                                                children: "LinkedIn"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                lineNumber: 83,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                className: "w-3 h-3 opacity-30 ml-1 group-hover:text-red-400",
-                                                fill: "none",
-                                                stroke: "currentColor",
-                                                viewBox: "0 0 24 24",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    strokeLinecap: "round",
-                                                    strokeLinejoin: "round",
-                                                    strokeWidth: 2,
-                                                    d: "M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                    lineNumber: 84,
-                                                    columnNumber: 137
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                lineNumber: 84,
-                                                columnNumber: 17
+                                                lineNumber: 167,
+                                                columnNumber: 19
                                             }, this)
-                                        ]
-                                    }, void 0, true, {
+                                        }, void 0, false, {
+                                            fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                            lineNumber: 166,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
                                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                        lineNumber: 81,
+                                        lineNumber: 159,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                         href: "mailto:aarya.shrivaastava1026@gmail.com",
-                                        className: "flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-red-400 hover:bg-red-500/10 transition-all text-sm font-medium group",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                className: "w-4 h-4 opacity-70 group-hover:opacity-100 group-hover:text-red-400 transition-all",
-                                                fill: "none",
-                                                stroke: "currentColor",
-                                                strokeWidth: 2,
-                                                viewBox: "0 0 24 24",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    strokeLinecap: "round",
-                                                    strokeLinejoin: "round",
-                                                    d: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                    lineNumber: 87,
-                                                    columnNumber: 187
-                                                }, this)
+                                        "aria-label": "Email",
+                                        className: "w-12 h-12 flex items-center justify-center rounded-full glass border border-white/10 text-foreground opacity-60 hover:opacity-100 hover:border-red-400 hover:bg-red-500/10 hover:scale-110 transition-all",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                            className: "w-5 h-5",
+                                            fill: "none",
+                                            stroke: "currentColor",
+                                            strokeWidth: 1.8,
+                                            viewBox: "0 0 24 24",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                strokeLinecap: "round",
+                                                strokeLinejoin: "round",
+                                                d: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                lineNumber: 87,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "group-hover:text-red-400 transition-colors",
-                                                children: "Email"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                lineNumber: 88,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                className: "w-3 h-3 opacity-30 ml-1 group-hover:text-red-400",
-                                                fill: "none",
-                                                stroke: "currentColor",
-                                                viewBox: "0 0 24 24",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    strokeLinecap: "round",
-                                                    strokeLinejoin: "round",
-                                                    strokeWidth: 2,
-                                                    d: "M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                    lineNumber: 89,
-                                                    columnNumber: 137
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                                lineNumber: 89,
-                                                columnNumber: 17
+                                                lineNumber: 178,
+                                                columnNumber: 19
                                             }, this)
-                                        ]
-                                    }, void 0, true, {
+                                        }, void 0, false, {
+                                            fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                            lineNumber: 177,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
                                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                        lineNumber: 86,
+                                        lineNumber: 172,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                        href: "https://hackerrank.com/profile/aarya_shrivaast2",
+                                        target: "_blank",
+                                        rel: "noopener noreferrer",
+                                        "aria-label": "HackerRank",
+                                        className: "w-12 h-12 flex items-center justify-center rounded-full glass border border-white/10 text-foreground opacity-60 hover:opacity-100 hover:border-red-400 hover:bg-red-500/10 hover:scale-110 transition-all",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                            className: "w-5 h-5",
+                                            fill: "currentColor",
+                                            viewBox: "0 0 24 24",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                d: "M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V6.908a.405.405 0 00-.405-.405H8.2a.405.405 0 00-.405.405v10.359c0 .224.181.405.405.405h1.358c.224 0 .405-.181.405-.405v-4.119h4.074v4.269c0 .142.115.258.258.258h1.498c.141 0 .258-.116.258-.258V7.057a.258.258 0 00-.258-.258h-1.498z"
+                                            }, void 0, false, {
+                                                fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                                lineNumber: 191,
+                                                columnNumber: 19
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                            lineNumber: 190,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                        lineNumber: 183,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                        href: "https://codolio.com/profile/ApexVoyager30",
+                                        target: "_blank",
+                                        rel: "noopener noreferrer",
+                                        "aria-label": "Codolio",
+                                        className: "w-12 h-12 flex items-center justify-center rounded-full glass border border-white/10 text-foreground opacity-60 hover:opacity-100 hover:border-red-400 hover:bg-red-500/10 hover:scale-110 transition-all",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                            className: "w-5 h-5",
+                                            fill: "currentColor",
+                                            viewBox: "0 0 24 24",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                d: "M8.001 2.4A5.6 5.6 0 002.4 8v8a5.6 5.6 0 005.601 5.6h8A5.6 5.6 0 0021.6 16V8A5.6 5.6 0 0016 2.4h-8zm.001 3.2h8a2.4 2.4 0 012.4 2.4v8a2.4 2.4 0 01-2.4 2.4H8.002A2.4 2.4 0 015.6 16V8A2.4 2.4 0 018.002 5.6zM9.6 8a1.6 1.6 0 100 3.2A1.6 1.6 0 009.6 8zm4.8 4.8a1.6 1.6 0 100 3.2 1.6 1.6 0 000-3.2z"
+                                            }, void 0, false, {
+                                                fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                                lineNumber: 204,
+                                                columnNumber: 19
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                            lineNumber: 203,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                        lineNumber: 196,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                                lineNumber: 75,
+                                lineNumber: 144,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                        lineNumber: 23,
+                        lineNumber: 54,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-                lineNumber: 10,
+                lineNumber: 40,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-            lineNumber: 9,
+            lineNumber: 39,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
-        lineNumber: 8,
+        lineNumber: 38,
         columnNumber: 5
     }, this);
 }
@@ -3500,7 +3598,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaas
 function Footer() {
     const year = new Date().getFullYear();
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
-        className: "py-16 px-8",
+        className: "pt-20 pb-16 px-8",
         style: {
             borderTop: '1px solid rgba(255,255,255,0.08)'
         },
@@ -3564,10 +3662,10 @@ function Footer() {
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                    href: "mailto:hello@example.com",
+                                    href: "mailto:aarya.shrivaastava1026@gmail.com",
                                     className: "mt-2 text-sm font-medium text-foreground hover:text-red-400 transition-colors flex items-center gap-2 group",
                                     children: [
-                                        "hello@example.com",
+                                        "aarya.shrivaastava1026@gmail.com",
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                             className: "w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity group-hover:translate-x-0.5 group-hover:-translate-y-0.5",
                                             fill: "none",
