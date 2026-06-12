@@ -120,9 +120,9 @@ export default function ExperienceSection() {
           <h2 className="text-4xl sm:text-5xl font-black text-foreground">
             Experience & <span className="gradient-text">Activities</span>
           </h2>
-          <br/>
+          <br />
           <p className="text-foreground opacity-55 flex justify-center">
-           From internships to open-source sprints, leadership roles to podcast hosting — here's what I've been up to.
+            From internships to open-source sprints, leadership roles to podcast hosting — here's what I've been up to.
           </p>
         </div>
 
@@ -151,7 +151,7 @@ export default function ExperienceSection() {
                           {exp.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="text-xs px-4 py-1.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20"
+                              className="text-xs px-5 py-1.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20"
                             >
                               {tag}
                             </span>

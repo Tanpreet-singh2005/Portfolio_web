@@ -13,11 +13,11 @@ const SKILLS = {
 };
 
 const CATEGORY_META: Record<string, { color: string; icon: React.FC }> = {
-  'Languages':   { color: 'bg-violet-600',   icon: Icons.Code },
-  'Core CS':     { color: 'bg-blue-600',      icon: Icons.Cpu },
-  'Web & Tools': { color: 'bg-teal-500',      icon: Icons.Globe },
-  'AI / ML':     { color: 'bg-indigo-500',    icon: Icons.Sparkles },
-  'Soft Skills': { color: 'bg-rose-500',      icon: Icons.Users },
+  'Languages': { color: 'bg-violet-600', icon: Icons.Code },
+  'Core CS': { color: 'bg-blue-600', icon: Icons.Cpu },
+  'Web & Tools': { color: 'bg-teal-500', icon: Icons.Globe },
+  'AI / ML': { color: 'bg-indigo-500', icon: Icons.Sparkles },
+  'Soft Skills': { color: 'bg-rose-500', icon: Icons.Users },
 };
 
 export default function SkillsSection() {
@@ -28,12 +28,12 @@ export default function SkillsSection() {
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         <div ref={headerRef} className="reveal section-header text-center w-full">
           <p className="text-red-400 font-mono text-sm mb-3 tracking-widest uppercase">What I Know</p>
-          
+
           <h2 className="text-4xl sm:text-5xl font-black text-foreground">
             Skills & <span className="gradient-text">Expertise</span>
-            
+
           </h2>
-          <br/>
+          <br />
           <p className="text-foreground opacity-55 ">
             A blend of programming fundamentals, modern tooling, and leadership skills built across coursework, open-source, and clubs.
           </p>
@@ -57,7 +57,8 @@ export default function SkillsSection() {
                 </div>
                 <div className="flex flex-wrap justify-center gap-2.5 mt-auto">
                   {skills.map((skill) => (
-                    <span key={skill} className="skill-pill px-5 py-2 rounded-full text-xs text-foreground font-semibold cursor-default">
+                    //<span key={skill} className="skill-pill px-5 py-2 rounded-full text-xs text-foreground font-semibold cursor-default">
+                    <span key={skill} className="skill-pill rounded-full text-xs text-foreground font-semibold cursor-default">
                       {skill}
                     </span>
                   ))}
@@ -84,7 +85,7 @@ export default function SkillsSection() {
               className="w-11 h-11 flex items-center justify-center rounded-full glass border border-yellow-500/40 text-yellow-400 hover:text-white hover:border-yellow-400 hover:bg-yellow-500/10 transition-all hover:scale-110"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V6.908a.405.405 0 00-.405-.405H8.2a.405.405 0 00-.405.405v10.359c0 .224.181.405.405.405h1.358c.224 0 .405-.181.405-.405v-4.119h4.074v4.269c0 .142.115.258.258.258h1.498c.141 0 .258-.116.258-.258V7.057a.258.258 0 00-.258-.258h-1.498z"/>
+                <path d="M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V6.908a.405.405 0 00-.405-.405H8.2a.405.405 0 00-.405.405v10.359c0 .224.181.405.405.405h1.358c.224 0 .405-.181.405-.405v-4.119h4.074v4.269c0 .142.115.258.258.258h1.498c.141 0 .258-.116.258-.258V7.057a.258.258 0 00-.258-.258h-1.498z" />
               </svg>
             </a>
           </RevealCard>

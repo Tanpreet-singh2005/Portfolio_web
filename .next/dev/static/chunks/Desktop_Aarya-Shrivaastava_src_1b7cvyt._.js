@@ -2549,12 +2549,13 @@ function SkillsSection() {
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex flex-wrap justify-center gap-2.5 mt-auto",
-                                        children: skills.map((skill)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "skill-pill px-5 py-2 rounded-full text-xs text-foreground font-semibold cursor-default",
+                                        children: skills.map((skill)=>//<span key={skill} className="skill-pill px-5 py-2 rounded-full text-xs text-foreground font-semibold cursor-default">
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "skill-pill rounded-full text-xs text-foreground font-semibold cursor-default",
                                                 children: skill
                                             }, skill, false, {
                                                 fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/SkillsSection.tsx",
-                                                lineNumber: 60,
+                                                lineNumber: 61,
                                                 columnNumber: 21
                                             }, this))
                                     }, void 0, false, {
@@ -2578,12 +2579,12 @@ function SkillsSection() {
                                     size: "md",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$src$2f$components$2f$AppIcon$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Icons"].Star, {}, void 0, false, {
                                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/SkillsSection.tsx",
-                                        lineNumber: 75,
+                                        lineNumber: 76,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/SkillsSection.tsx",
-                                    lineNumber: 74,
+                                    lineNumber: 75,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2591,7 +2592,7 @@ function SkillsSection() {
                                     children: "HackerRank 4★ C++"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/SkillsSection.tsx",
-                                    lineNumber: 77,
+                                    lineNumber: 78,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2599,7 +2600,7 @@ function SkillsSection() {
                                     children: "Ranked among top competitive programmers"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/SkillsSection.tsx",
-                                    lineNumber: 78,
+                                    lineNumber: 79,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -2616,23 +2617,23 @@ function SkillsSection() {
                                             d: "M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V6.908a.405.405 0 00-.405-.405H8.2a.405.405 0 00-.405.405v10.359c0 .224.181.405.405.405h1.358c.224 0 .405-.181.405-.405v-4.119h4.074v4.269c0 .142.115.258.258.258h1.498c.141 0 .258-.116.258-.258V7.057a.258.258 0 00-.258-.258h-1.498z"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/SkillsSection.tsx",
-                                            lineNumber: 87,
+                                            lineNumber: 88,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/SkillsSection.tsx",
-                                        lineNumber: 86,
+                                        lineNumber: 87,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/SkillsSection.tsx",
-                                    lineNumber: 79,
+                                    lineNumber: 80,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/SkillsSection.tsx",
-                            lineNumber: 70,
+                            lineNumber: 71,
                             columnNumber: 11
                         }, this)
                     ]
@@ -2945,7 +2946,7 @@ function ExperienceSection() {
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "flex flex-wrap justify-center gap-2 mt-2",
                                                         children: exp.tags.map((tag)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                className: "text-xs px-4 py-1.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20",
+                                                                className: "text-xs px-5 py-1.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20",
                                                                 children: tag
                                                             }, tag, false, {
                                                                 fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ExperienceSection.tsx",
@@ -3233,7 +3234,7 @@ function ContactSection() {
     const ref = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$src$2f$hooks$2f$useReveal$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useReveal"])();
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         id: "contact",
-        className: "pt-32 pb-24 px-6 flex items-center justify-center relative z-10",
+        className: "pt-32 pb-24 px-6 flex items-center justify-center relative z-100",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "max-w-4xl mx-auto text-center flex flex-col items-center w-full",
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3445,6 +3446,11 @@ function ContactSection() {
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
                                 lineNumber: 68,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                fileName: "[project]/Desktop/Aarya-Shrivaastava/src/components/ContactSection.tsx",
+                                lineNumber: 73,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Aarya$2d$Shrivaastava$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {

@@ -5,7 +5,7 @@ export default function ContactSection() {
   const ref = useReveal();
 
   return (
-    <section id="contact" className="pt-32 pb-24 px-6 flex items-center justify-center relative z-10">
+    <section id="contact" className="pt-32 pb-24 px-6 flex items-center justify-center relative z-100">
       <div className="max-w-4xl mx-auto text-center flex flex-col items-center w-full">
         <div ref={ref} className="reveal w-full flex flex-col items-center">
 
@@ -70,7 +70,7 @@ export default function ContactSection() {
               <span className="text-xs font-mono tracking-wider text-foreground opacity-40 px-2 uppercase">or reach out via</span>
               <div className="flex-1 h-px bg-white/10"></div>
             </div>
-
+            <br></br>
             {/* Social Buttons */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <a href="https://github.com/AaryaShrivaastava" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-red-400 hover:bg-red-500/10 transition-all text-sm font-medium group">
