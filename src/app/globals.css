@@ -365,6 +365,16 @@ section[id] {
   box-shadow: 0 6px 16px rgba(224, 32, 79, 0.25);
 }
 
+/* ── Certification card ── */
+.cert-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(224, 32, 79, 0.15), 0 0 60px rgba(139, 92, 246, 0.08);
+}
+
 /* ── Section header ── */
 .section-header {
   text-align: center;
