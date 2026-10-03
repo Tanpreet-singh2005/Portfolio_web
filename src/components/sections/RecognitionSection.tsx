@@ -8,8 +8,9 @@ export default function RecognitionSection() {
     <section
       id="recognition"
       aria-label="Recognition"
-      className="max-w-6xl mx-auto px-6 py-24 md:py-32 flex flex-col gap-24"
+      className="w-full section-band-1 py-24 md:py-32"
     >
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6 flex flex-col gap-24">
       {/* Extracurriculars / Achievements */}
       <div>
         <FadeUp>
@@ -17,16 +18,16 @@ export default function RecognitionSection() {
             className="font-mono text-xs tracking-widest uppercase text-deep-brown/60 mb-3 block"
             style={{ fontFamily: "var(--font-mono)" }}
           >
-            05 · Recognition
+              {/*05 · Recognition*/}
           </span>
         </FadeUp>
         <FadeUp delay={0.05}>
           <h2
             className="text-ink mb-10"
             style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(2rem, 4vw, 3.2rem)",
-              fontWeight: 500,
+              fontFamily: "var(--font-edwardian)",
+              fontSize: "clamp(1.9rem, 3.8vw, 3.2rem)",
+              fontWeight: 400,
             }}
           >
             Achievements
@@ -38,7 +39,7 @@ export default function RecognitionSection() {
             <FadeUp key={i} delay={0.1 + i * 0.1}>
               <div className="card p-8 h-full flex flex-col group hover:-translate-y-1 transition-transform duration-300">
                 <span 
-                  className="font-mono text-[10px] tracking-widest uppercase text-gold font-bold mb-4"
+                  className="font-mono text-[11px] tracking-widest uppercase text-gold font-bold mb-4"
                   style={{ fontFamily: "var(--font-mono)" }}
                 >
                   {item.period}
@@ -56,7 +57,7 @@ export default function RecognitionSection() {
                         className="shrink-0 w-1.5 h-1.5 rounded-full bg-gold/60 mt-2"
                         aria-hidden="true"
                       />
-                      <p className="text-ink/70 text-sm leading-relaxed">{b}</p>
+                      <p className="text-ink/90 text-sm leading-relaxed">{b}</p>
                     </li>
                   ))}
                 </ul>
@@ -73,16 +74,16 @@ export default function RecognitionSection() {
             className="font-mono text-xs tracking-widest uppercase text-deep-brown/60 mb-3 block"
             style={{ fontFamily: "var(--font-mono)" }}
           >
-            Credentials
+            {/*Credentials*/}
           </span>
         </FadeUp>
         <FadeUp delay={0.05}>
           <h2
             className="text-ink mb-10"
             style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(2rem, 4vw, 3.2rem)",
-              fontWeight: 500,
+              fontFamily: "var(--font-edwardian)",
+              fontSize: "clamp(1.9rem, 3.8vw, 3.2rem)",
+              fontWeight: 400,
             }}
           >
             Certificates
@@ -99,19 +100,20 @@ export default function RecognitionSection() {
                 >
                   {cert.title}
                 </h3>
-                <p className="text-ink/70 text-[13px] leading-relaxed flex-grow mb-6">
+                <p className="text-ink/90 text-[13px] leading-relaxed flex-grow mb-6">
                   {cert.detail}
                 </p>
                 <span 
-                  className="font-mono text-[10px] tracking-widest uppercase text-ink/40 font-bold mt-auto"
+                  className="font-mono text-[11px] tracking-widest uppercase text-ink/40 font-bold mt-auto"
                   style={{ fontFamily: "var(--font-mono)" }}
                 >
-                  Credential
+                  {/*Credential*/}
                 </span>
               </div>
             </FadeUp>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );

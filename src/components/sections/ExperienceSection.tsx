@@ -24,26 +24,26 @@ export default function ExperienceSection() {
     <section
       id="experience"
       aria-label="Work experience"
-      className="max-w-[1400px] mx-auto px-6 py-24 md:py-32"
+      className="w-full section-band-1 py-24 md:py-32"
     >
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6">
       <FadeUp>
         <div className="max-w-6xl mx-auto mb-12">
           <span
             className="font-mono text-xs tracking-widest uppercase text-deep-brown/60 mb-4 block"
             style={{ fontFamily: "var(--font-mono)" }}
           >
-          03 · Experience
+          {/*03 · Experience*/}
           </span>
           <h2
             className="text-ink"
             style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(2rem, 4vw, 3.2rem)",
-              fontWeight: 500,
+              fontFamily: "var(--font-edwardian)",
+              fontSize: "clamp(1.9rem, 4.2vw, 3.2rem)",
+              fontWeight: 400,
             }}
           >
             Professional Trajectory
-            {/*Where I&rsquo;ve Worked*/}
           </h2>
         </div>
       </FadeUp>
@@ -82,7 +82,7 @@ export default function ExperienceSection() {
                     isActive ? "opacity-0 pointer-events-none" : "opacity-100",
                   ].join(" ")}
                 >
-                  <span className="font-mono text-[11px] font-bold text-ink/40 tracking-wider">
+                  <span className="font-mono text-[12px] font-bold text-ink/40 tracking-wider">
                     {padZero(index + 1)}
                   </span>
                   <span
@@ -90,7 +90,7 @@ export default function ExperienceSection() {
                   >
                     {item.company}
                   </span>
-                  <span className="md:hidden font-mono text-[10px] tracking-widest text-ink/40 uppercase">
+                  <span className="md:hidden font-mono text-[11px] font-bold tracking-widest text-ink/40 uppercase">
                     {item.category}
                   </span>
                 </div>
@@ -107,7 +107,7 @@ export default function ExperienceSection() {
                       <span className="font-mono text-sm font-bold text-ink/30">
                         {padZero(index + 1)}
                       </span>
-                      <span className="font-mono text-[11px] tracking-widest uppercase text-hero-pink font-semibold">
+                      <span className="font-mono text-[12px] tracking-widest uppercase text-hero-pink font-bold">
                         {item.category}
                       </span>
                     </div>
@@ -120,14 +120,14 @@ export default function ExperienceSection() {
                     </h3>
                     
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-8">
-                      <p className="text-deep-brown font-medium text-lg md:text-xl">
+                      <p className="text-ink font-medium text-lg md:text-xl">
                         {item.role}
                       </p>
-                      <div className="flex items-center gap-3 text-ink/50 font-mono text-xs tracking-wide">
+                      <div className="flex items-center gap-3 text-ink/80 font-mono text-[14px] md:text-[15px] tracking-wide">
                         <span>{item.period}</span>
                         {item.location && (
                           <>
-                            <span className="w-1 h-1 rounded-full bg-ink/20" />
+                            <span className="w-1 h-1 rounded-full bg-ink/30" />
                             <span>{item.location}</span>
                           </>
                         )}
@@ -142,7 +142,7 @@ export default function ExperienceSection() {
                               className="shrink-0 w-1.5 h-1.5 rounded-full bg-gold/80 mt-2"
                               aria-hidden="true"
                             />
-                            <p className="text-ink/80 text-[15px] leading-relaxed">
+                            <p className="text-ink/90 text-[15px] leading-relaxed">
                               {bullet}
                             </p>
                           </li>
@@ -156,6 +156,7 @@ export default function ExperienceSection() {
           })}
         </div>
       </FadeUp>
+      </div>
     </section>
   );
 }

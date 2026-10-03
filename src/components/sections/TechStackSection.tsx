@@ -51,16 +51,16 @@ const skills: SkillType[] = [
   { no: "24", symbol: "Do", name: "Docker", iconImg: "/tech-stack/24-docker.svg", type: "tools", col: 7, row: 4 },
   { no: "25", symbol: "Cd", name: "Codex", iconImg: "/tech-stack/25-codex.svg", type: "tools", col: 8, row: 4 },
   { no: "26", symbol: "Cu", name: "Cursor", iconImg: "/tech-stack/26-cursor.svg", type: "tools", col: 9, row: 4 },
-  { no: "27", symbol: "Ag", name: "Antigravity", iconImg: "/tech-stack/27-agy.svg", type: "tools", col: 10, row: 4 },
+  { no: "27", symbol: "Ag", name: "Antigravity", iconImg: "/tech-stack/agy.webp", type: "tools", col: 10, row: 4 },
   { no: "28", symbol: "Op", name: "OpenCode", iconImg: "/tech-stack/28-opencode.svg", type: "tools", col: 11, row: 4 },
 ];
 
 const colors = {
-  language: { bg: "rgba(244, 224, 183, 0.42)", border: "rgba(198, 166, 111, 0.28)", accent: "#d5ae61" },
-  backend: { bg: "rgba(207, 222, 243, 0.42)", border: "rgba(137, 165, 204, 0.28)", accent: "#6d9ee8" },
-  ai: { bg: "rgba(247, 207, 207, 0.42)", border: "rgba(210, 145, 155, 0.30)", accent: "#d68191" },
-  database: { bg: "rgba(216, 230, 201, 0.42)", border: "rgba(145, 175, 125, 0.28)", accent: "#86a96f" },
-  tools: { bg: "rgba(226, 211, 237, 0.42)", border: "rgba(168, 140, 190, 0.28)", accent: "#9b7ab1" },
+  language: { bg: "rgba(244, 224, 183, 1)", border: "rgba(198, 166, 111, 0.28)", accent: "#d5ae61" },
+  backend: { bg: "rgba(207, 222, 243, 1)", border: "rgba(137, 165, 204, 0.28)", accent: "#6d9ee8" },
+  ai: { bg: "rgba(247, 207, 207, 1)", border: "rgba(210, 145, 155, 0.30)", accent: "#d68191" },
+  database: { bg: "rgba(216, 230, 201, 1)", border: "rgba(145, 175, 125, 0.28)", accent: "#86a96f" },
+  tools: { bg: "rgba(226, 211, 237, 1)", border: "rgba(168, 140, 190, 0.28)", accent: "#9b7ab1" },
 };
 
 function SkillCard({ skill, className = "" }: { skill: SkillType, className?: string }) {
@@ -139,7 +139,7 @@ function LegendItem({ type, label }: { type: keyof typeof colors; label: string 
         }}
       />
       <span 
-        className="text-[10px] uppercase tracking-[0.16em] text-ink/70"
+        className="text-[10px] uppercase tracking-[0.16em] text-ink/90 font-bold"
         style={{ fontFamily: "var(--font-mono, monospace)" }}
       >
         {label}
@@ -152,12 +152,9 @@ export default function TechStackSection() {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden pt-[160px] pb-32"
+      className="relative overflow-hidden w-full section-band-2 py-24 md:py-32"
     >
-      <div 
-        className="mx-auto"
-        style={{ width: "min(92vw, 1500px)" }}
-      >
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6">
         <FadeUp>
           <div className="mb-14 flex items-end justify-between">
             <div>
@@ -165,14 +162,14 @@ export default function TechStackSection() {
                 className="mb-5 text-[11px] uppercase tracking-[0.28em] text-deep-brown/60"
                 style={{ fontFamily: "var(--font-mono, monospace)" }}
               >
-                02 · Skills
+                {/*02 · Skills*/}
               </div>
 
               <h2 
-                className="text-[58px] leading-none tracking-[-0.055em] text-ink md:text-[68px]"
-                style={{ fontFamily: "var(--font-display, serif)", lineHeight: "0.95" }}
+                className="text-ink leading-none mt-2 mb-4"
+                style={{ fontFamily: "var(--font-edwardian)", fontSize: "clamp(1.9rem, 4.5vw, 3.4rem)" }}
               >
-                Tech Stack
+                Skills
               </h2>
             </div>
 
@@ -248,11 +245,9 @@ export default function TechStackSection() {
           <div
             className="inline-flex flex-wrap items-center gap-x-7 gap-y-3 rounded-full border px-7 py-4"
             style={{
-              background: "rgba(255,255,255,0.28)",
-              borderColor: "rgba(170,145,120,0.20)",
-              backdropFilter: "blur(18px)",
-              WebkitBackdropFilter: "blur(18px)",
-              boxShadow: "0 10px 35px rgba(75,50,35,0.05)",
+              background: "#ffffff",
+              borderColor: "rgba(170,145,120,0.25)",
+              boxShadow: "0 8px 30px rgba(75,50,35,0.08)",
             }}
           >
             <LegendItem type="language" label="Languages" />

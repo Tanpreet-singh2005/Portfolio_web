@@ -43,14 +43,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         >
           {project.title}
         </h3>
-        <p className="text-deep-brown/70 text-sm mb-1">{project.subtitle}</p>
+        <p className="text-deep-brown/90 text-sm mb-1">{project.subtitle}</p>
 
         {/* Role badge */}
         {project.role && (
           <div className="inline-flex items-center gap-1.5 mb-3">
             <PersonRegular fontSize={12} className="text-gold" />
             <span
-              className="font-mono text-[10px] tracking-widest uppercase text-gold"
+              className="font-mono text-[11px] font-bold tracking-widest uppercase text-gold"
               style={{ fontFamily: "var(--font-mono)" }}
             >
               {project.role}
@@ -68,7 +68,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 className="shrink-0 w-1.5 h-1.5 rounded-full bg-gold/60 mt-2"
                 aria-hidden="true"
               />
-              <p className="text-ink/65 text-sm leading-relaxed">{b}</p>
+              <p className="text-ink/85 text-sm leading-relaxed">{b}</p>
             </li>
           ))}
         </ul>
@@ -79,7 +79,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             <span
               key={tag}
               role="listitem"
-              className="px-2.5 py-1 rounded-md text-xs font-medium text-deep-brown/70 bg-deep-brown/6 border border-deep-brown/10"
+              className="px-2.5 py-1 rounded-md text-xs font-medium text-deep-brown/90 bg-deep-brown/6 border border-deep-brown/10"
               style={{ fontFamily: "var(--font-mono)" }}
             >
               {tag}
@@ -96,15 +96,16 @@ export default function ProjectsSection() {
     <section
       id="projects"
       aria-label="Projects"
-      className="max-w-6xl mx-auto px-6 py-24 md:py-32"
+      className="w-full section-band-2 py-24 md:py-32"
     >
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6">
       {/* Section label */}
       <FadeUp>
         <span
           className="font-mono text-xs tracking-widest uppercase text-deep-brown/60 mb-4 block"
           style={{ fontFamily: "var(--font-mono)" }}
         >
-          04 · Projects
+            {/*04 · Projects*/}
         </span>
       </FadeUp>
 
@@ -112,9 +113,9 @@ export default function ProjectsSection() {
         <h2
           className="text-ink mb-12"
           style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(2rem, 4vw, 3.2rem)",
-            fontWeight: 500,
+            fontFamily: "var(--font-edwardian)",
+            fontSize: "clamp(1.9rem, 4.2vw, 3.2rem)",
+            fontWeight: 400,
           }}
         >
           Selected Work
@@ -125,6 +126,7 @@ export default function ProjectsSection() {
         {projects.map((p, i) => (
           <ProjectCard key={p.title} project={p} index={i} />
         ))}
+      </div>
       </div>
     </section>
   );

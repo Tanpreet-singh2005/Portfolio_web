@@ -254,9 +254,17 @@ export default function HeroSection() {
           transition={{ delay: 0.35, duration: 0.55 }}
           className="mb-10 flex flex-col gap-3 max-w-md"
         >
-          <p className="text-white text-lg font-medium">
-            {profile.headline}
-          </p>
+          <div className="flex flex-wrap gap-2.5 mb-2">
+            <span className="px-4 py-1.5 bg-white/10 border border-white/20 rounded-full text-white/90 text-sm font-medium backdrop-blur-sm">
+              Full Stack Engineer Intern
+            </span>
+            <span className="px-4 py-1.5 bg-white/10 border border-white/20 rounded-full text-white/90 text-sm font-medium backdrop-blur-sm">
+              AI
+            </span>
+            <span className="px-4 py-1.5 bg-white/10 border border-white/20 rounded-full text-white/90 text-sm font-medium backdrop-blur-sm">
+              CSE @ VIT Bhopal
+            </span>
+          </div>
           <p className="text-white/80 text-[15px] md:text-[17px] leading-relaxed">
             Building AI-driven backends and full-stack products — one clean API at a time.
           </p>
