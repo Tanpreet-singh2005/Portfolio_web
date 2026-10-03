@@ -1,0 +1,112 @@
+/* ── Google Fonts — MUST be first @import ─────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Great+Vibes&display=swap");
+
+@import "tailwindcss";
+
+/* ── Design Tokens ────────────────────────────────────────────────────────── */
+:root {
+  --hero-pink:  #FF3380;
+  --blush:      #FFC2D6;
+  --peach:      #FBDCCB;
+  --cream:      #F7EEE3;
+  --beige:      #EFE3D2;
+  --ink:        #1B1416;
+  --deep-brown: #4A2B2F;
+  --gold:       #C9A227;
+  --gold-light: #E8C84A;
+  --white:      #FFFFFF;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", "Courier New", monospace;
+  --font-script:  "Great Vibes", cursive;
+
+  --radius-card: 1rem;
+  --shadow-card: 0 4px 24px 0 rgba(27, 20, 22, 0.07);
+  --border-hair: 1px solid rgba(27, 20, 22, 0.10);
+}
+
+/* ── Tailwind v4 Theme Extension ─────────────────────────────────────────── */
+@theme {
+  --color-hero-pink:  #FF3380;
+  --color-blush:      #FFC2D6;
+  --color-peach:      #FBDCCB;
+  --color-cream:      #F7EEE3;
+  --color-beige:      #EFE3D2;
+  --color-ink:        #1B1416;
+  --color-deep-brown: #4A2B2F;
+  --color-gold:       #C9A227;
+  --color-gold-light: #E8C84A;
+
+  --font-family-display: "Fraunces", Georgia, serif;
+  --font-family-body:    "Inter", system-ui, sans-serif;
+  --font-family-mono:    "JetBrains Mono", "Courier New", monospace;
+}
+
+/* ── Base Reset & Typography ─────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: transparent;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* ── Focus Styles ─────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Scroll margin for fixed nav ─────────────────────────────────────────── */
+[id] {
+  scroll-margin-top: 72px;
+}
+
+/* ── Grain Overlay ───────────────────────────────────────────────────────── */
+.grain-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  mix-blend-mode: overlay;
+}
+
+/* ── Card base ───────────────────────────────────────────────────────────── */
+.card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: var(--border-hair);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+/* ── Hairline divider ────────────────────────────────────────────────────── */
+.hairline {
+  border: none;
+  border-top: var(--border-hair);
+}
+
+/* ── Reduced Motion ──────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -38,10 +38,11 @@ export interface Education {
 export interface ExperienceItem {
   company: string;
   role: string;
-  type: "remote" | "onsite" | "hybrid";
-  location: string;
+  type?: "remote" | "onsite" | "hybrid";
+  location?: string;
   period: string;
   bullets: string[];
+  category: string;
 }
 
 export interface Project {
@@ -68,14 +69,14 @@ export interface Extracurricular {
 
 export const profile: Profile = {
   name: "Aarya Shrivaastava",
-  headline: "Full Stack Engineer Intern · AI & Backend · CSE @ VIT Bhopal",
+  headline: "Full Stack Engineer Intern · AI · CSE @ VIT Bhopal",
   email: "aarya.shrivaastava1026@gmail.com",
   resumeUrl: "/Aarya_Shrivaastava_Resume.pdf",
   links: {
     github: "https://github.com/AaryaShrivaastava",
     linkedin: "https://linkedin.com/in/aarya-shrivaastava-7b198b2a3",
-    codolio: "TODO_CODOLIO_URL",
-    x: "TODO_X_URL",
+    codolio: "http://codolio.com/profile/ApexVoyager30",
+    x: "https://x.com/Aarya_S30",
   },
 };
 
@@ -116,6 +117,7 @@ export const experience: ExperienceItem[] = [
     type: "remote",
     location: "Houston, Texas, USA",
     period: "June 2026 – Present",
+    category: "ENGINEERING",
     bullets: [
       "Architecting AI-driven platforms from scratch using Python and Langflow, with 5+ tool integrations to decrease manual processing time.",
       "Collaborated with cross-functional teams to enhance UI components for AI chat applications and support system integration.",
@@ -130,9 +132,43 @@ export const experience: ExperienceItem[] = [
     type: "remote",
     location: "Noida, India",
     period: "May 2025 – June 2025",
+    category: "TECHNOLOGY",
     bullets: [
       "Supported data privacy, security and risk management controls while analyzing cloud infrastructure for an EdTech platform serving 1M+ users.",
       "Created and maintained technical documentation for enterprise-level system architecture across cloud nodes, reducing developer onboarding time.",
+    ],
+  },
+  {
+    company: "E-Cell, VIT Bhopal",
+    role: "Finance & Sponsorship Team Member",
+    period: "Sep 2024 – Present",
+    category: "FINANCE",
+    bullets: [
+      "Coordinated with external organizations to secure sponsorships and support financial planning for entrepreneurial initiatives.",
+      "Conducted outreach to potential sponsors via B2B pitching and maintained communication with key stakeholders.",
+      "Supported event-related financial activities and collaborated closely with the core E-Cell team to ensure operational success.",
+    ],
+  },
+  {
+    company: "AI Club, VIT Bhopal",
+    role: "PR & Outreach Lead",
+    period: "Nov 2024 – Present",
+    category: "OUTREACH",
+    bullets: [
+      "Progressed from PR & Outreach Team Member to Lead, coordinating internal and external communication.",
+      "Promoted AI Club initiatives and built connections with external speakers and technical communities.",
+      "Led outreach activities and supported the planning and execution of club events and technical sessions.",
+    ],
+  },
+  {
+    company: "NSS Unit, VIT Bhopal",
+    role: "Event Management Team",
+    period: "2024 – Present",
+    category: "EVENT MANAGEMENT",
+    bullets: [
+      "Supported event planning, logistics, and on-ground coordination for various community and volunteering initiatives.",
+      "Collaborated with team members to manage participant coordination and ensure smooth event execution.",
+      "Contributed to operational planning and teamwork for campus and community outreach events.",
     ],
   },
 ];
