@@ -134,6 +134,17 @@ export default function ContactSection() {
         {/* Left: heading + text + socials */}
         <div className="lg:col-span-5 flex flex-col gap-10">
           <div>
+            <FadeUp delay={0.05}>
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/40 border border-[#d5cdb3]/40 backdrop-blur-md shadow-sm mb-8">
+                <span className="relative flex h-2 w-2 ml-1">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span className="text-[13px] font-medium text-deep-brown mr-1">
+                  Open to internships, freelance opportunities, and collaborations.
+                </span>
+              </div>
+            </FadeUp>
             <FadeUp delay={0.1}>
               <h2
                 className="text-ink leading-tight mb-6"
