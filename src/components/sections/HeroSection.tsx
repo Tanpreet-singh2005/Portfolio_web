@@ -68,7 +68,7 @@ export function HeadTracker({ debug = false }: HeadTrackerProps) {
        const l = new window.Image(); l.src = `/frames/left/frame_${padFrame(i)}.webp`;
     });
     setTimeout(() => {
-      for (let i = 1; i <= FRAMES; i += 2) {
+      for (let i = 1; i <= FRAMES; i++) {
          const r = new window.Image(); r.src = `/frames/right/frame_${padFrame(i)}.webp`;
          const l = new window.Image(); l.src = `/frames/left/frame_${padFrame(i)}.webp`;
       }
