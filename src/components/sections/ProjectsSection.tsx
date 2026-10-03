@@ -104,7 +104,7 @@ export default function ProjectsSection() {
           className="font-mono text-xs tracking-widest uppercase text-deep-brown/60 mb-4 block"
           style={{ fontFamily: "var(--font-mono)" }}
         >
-          05 · Projects
+          04 · Projects
         </span>
       </FadeUp>
 

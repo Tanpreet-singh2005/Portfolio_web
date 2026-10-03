@@ -32,7 +32,7 @@ export default function ExperienceSection() {
             className="font-mono text-xs tracking-widest uppercase text-deep-brown/60 mb-4 block"
             style={{ fontFamily: "var(--font-mono)" }}
           >
-          My journey
+          03 · Experience
           </span>
           <h2
             className="text-ink"

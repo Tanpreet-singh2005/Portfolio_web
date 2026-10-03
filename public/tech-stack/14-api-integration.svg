@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img">
+  <title>API Integration</title>
+  <path d="M64 22c-16 0-28 10-28 22 0 8 5 15 12 19v6h32v-6c7-4 12-11 12-19 0-12-12-22-28-22z" fill="#93C5FD"/>
+  <path d="M44 70h40v8c0 6-8 10-20 10s-20-4-20-10z" fill="#3B82F6"/>
+  <circle cx="28" cy="96" r="10" fill="#1D4ED8"/>
+  <circle cx="64" cy="100" r="10" fill="#1D4ED8"/>
+  <circle cx="100" cy="96" r="10" fill="#1D4ED8"/>
+  <path d="M36 90l20 4M72 94l20-4" stroke="#1D4ED8" stroke-width="3" stroke-linecap="round"/>
+  <text x="28" y="100" text-anchor="middle" font-family="Georgia, serif" font-size="9" font-weight="700" fill="#fff">A</text>
+  <text x="64" y="104" text-anchor="middle" font-family="Georgia, serif" font-size="9" font-weight="700" fill="#fff">P</text>
+  <text x="100" y="100" text-anchor="middle" font-family="Georgia, serif" font-size="9" font-weight="700" fill="#fff">I</text>
+</svg>

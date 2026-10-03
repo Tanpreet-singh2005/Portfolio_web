@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img">
+  <title>Antigravity CLI (agy)</title>
+  <rect width="128" height="128" rx="28" fill="#0B1220"/>
+  <path d="M34 78c8-28 20-42 30-42s22 14 30 42" fill="none" stroke="#8AB4F8" stroke-width="6" stroke-linecap="round"/>
+  <path d="M40 78h48" stroke="#E8EAED" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="64" cy="40" r="6" fill="#F9AB00"/>
+  <text x="64" y="104" text-anchor="middle" font-family="ui-monospace, monospace" font-size="18" font-weight="700" fill="#E8EAED">agy</text>
+</svg>

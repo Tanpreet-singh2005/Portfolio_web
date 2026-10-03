@@ -71,7 +71,7 @@ export const profile: Profile = {
   name: "Aarya Shrivaastava",
   headline: "Full Stack Engineer Intern · AI · CSE @ VIT Bhopal",
   email: "aarya.shrivaastava1026@gmail.com",
-  resumeUrl: "/Aarya_Shrivaastava_Resume.pdf",
+  resumeUrl: "https://drive.google.com/file/d/1b_sfMXHTc-wvIx3mJn5WSCRe6svW5lrs/view?usp=sharing",
   links: {
     github: "https://github.com/AaryaShrivaastava",
     linkedin: "https://linkedin.com/in/aarya-shrivaastava-7b198b2a3",
@@ -90,20 +90,36 @@ export const education: Education = {
   period: "2023 – 2027",
   certifications: [
     {
-      title: "NPTEL Elite + Gold Scholar — Marketing Analytics",
-      detail: "99th percentile · Top 1% among 3,495 candidates",
+      title: "Marketing Analytics (IIT Kharagpur)",
+      detail: "NPTEL · Elite + Gold Certificate | Score: 99% | Top 1% Performer · May 2026",
     },
     {
-      title: "NPTEL Elite Certificate — Introduction to Machine Learning",
-      detail: "Elite Certificate",
+      title: "The Bits and Bytes of Computer Networking",
+      detail: "Google (Coursera) · Nov 2025",
     },
     {
-      title: "HackerRank — C++",
-      detail: "4-Star",
+      title: "Introduction to Machine Learning",
+      detail: "NPTEL (IIT Madras) · Elite Certificate (71%) · May 2025",
     },
     {
-      title: "HackerRank — Python",
-      detail: "3-Star",
+      title: "C++ Programming Internship",
+      detail: "CodSoft · Aug 2024",
+    },
+    {
+      title: "Python Programming Internship",
+      detail: "CodSoft · Jul 2024",
+    },
+    {
+      title: "Fundamentals Of AI and ML",
+      detail: "Vityarthi · May 2024",
+    },
+    {
+      title: "Python Essentials",
+      detail: "Vityarthi · May 2024",
+    },
+    {
+      title: "Learn Python: The Complete Python Programming Course",
+      detail: "Udemy · Jan 2024",
     },
   ],
 };
@@ -139,31 +155,32 @@ export const experience: ExperienceItem[] = [
     ],
   },
   {
-    company: "E-Cell, VIT Bhopal",
-    role: "Finance & Sponsorship Team Member",
-    period: "Sep 2024 – Present",
-    category: "FINANCE",
-    bullets: [
-      "Coordinated with external organizations to secure sponsorships and support financial planning for entrepreneurial initiatives.",
-      "Conducted outreach to potential sponsors via B2B pitching and maintained communication with key stakeholders.",
-      "Supported event-related financial activities and collaborated closely with the core E-Cell team to ensure operational success.",
-    ],
-  },
-  {
     company: "AI Club, VIT Bhopal",
     role: "PR & Outreach Lead",
-    period: "Nov 2024 – Present",
+    period: "Nov 2024 – Sep 2026",
     category: "OUTREACH",
     bullets: [
-      "Progressed from PR & Outreach Team Member to Lead, coordinating internal and external communication.",
+      "Progressed from PR & Outreach Team Member (Nov '24 - Apr '25) to Lead (Apr '25 - Sep '26), coordinating internal and external communication.",
       "Promoted AI Club initiatives and built connections with external speakers and technical communities.",
       "Led outreach activities and supported the planning and execution of club events and technical sessions.",
     ],
   },
   {
+    company: "E-Cell, VIT Bhopal",
+    role: "Finance & Sponsorship Team Member",
+    period: "Nov 2024 – May 2026",
+    category: "FINANCE",
+    bullets: [
+      "Served as Podcast Team Member (Nov '24 - Mar '25) before transitioning to Finance and Sponsorship (Mar '25 - May '26).",
+      "Coordinated with external organizations to secure sponsorships and support financial planning for entrepreneurial initiatives.",
+      "Conducted outreach to potential sponsors via B2B pitching and maintained communication with key stakeholders.",
+      "Hosted podcast episodes and collaborated closely with the core E-Cell team to ensure operational success.",
+    ],
+  },
+  {
     company: "NSS Unit, VIT Bhopal",
     role: "Event Management Team",
-    period: "2024 – Present",
+    period: "Sep 2024 – Apr 2026",
     category: "EVENT MANAGEMENT",
     bullets: [
       "Supported event planning, logistics, and on-ground coordination for various community and volunteering initiatives.",
@@ -230,19 +247,25 @@ export const techStack: TechCategory[] = [
 
 export const extracurriculars: Extracurricular[] = [
   {
-    role: "PR & Outreach Lead — AI Club, VIT Bhopal",
-    period: "Nov 2024 – Present",
+    role: "Marketing Analytics (IIT Kharagpur)",
+    period: "May 2026",
     bullets: [
-      "Coordinated 5+ technical events for 200+ attendees.",
-      "Onboarded 5+ industry speakers.",
+      "NPTEL Elite + Gold Certificate",
+      "Score: 99% | Top 1% Performer",
     ],
   },
   {
-    role: "Campus Leadership & Community",
-    period: "Sep 2024 – Present",
+    role: "HackerRank C++",
+    period: "2024",
     bullets: [
-      "Reached out to 100+ companies and secured sponsorships via B2B pitching for E-Cell.",
-      "On-ground NSS volunteering.",
+      "Achieved 4-Star credential in C++ problem solving.",
+    ],
+  },
+  {
+    role: "HackerRank Python",
+    period: "2024",
+    bullets: [
+      "Achieved 3-Star credential in Python problem solving.",
     ],
   },
 ];

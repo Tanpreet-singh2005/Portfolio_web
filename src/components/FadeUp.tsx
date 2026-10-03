@@ -8,6 +8,7 @@ interface FadeUpProps {
   delay?: number;
   className?: string;
   once?: boolean;
+  style?: React.CSSProperties;
 }
 
 /**
@@ -20,12 +21,14 @@ export default function FadeUp({
   delay = 0,
   className,
   once = true,
+  style,
 }: FadeUpProps) {
   const shouldReduce = useReducedMotion();
 
   return (
     <motion.div
       className={className}
+      style={style}
       initial={shouldReduce ? false : { opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once, margin: "-60px" }}

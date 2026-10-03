@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img">
+  <title>ETL</title>
+  <rect x="8" y="44" width="28" height="40" rx="6" fill="#0F766E"/>
+  <rect x="50" y="44" width="28" height="40" rx="6" fill="#14B8A6"/>
+  <rect x="92" y="44" width="28" height="40" rx="6" fill="#134E4A"/>
+  <path d="M36 64h14M78 64h14" stroke="#115E59" stroke-width="3" stroke-linecap="round"/>
+  <path d="M46 60l6 4-6 4M88 60l6 4-6 4" fill="none" stroke="#115E59" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="22" y="69" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#fff">E</text>
+  <text x="64" y="69" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#042F2E">T</text>
+  <text x="106" y="69" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#fff">L</text>
+</svg>

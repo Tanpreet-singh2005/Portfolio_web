@@ -10,12 +10,12 @@ import {
 import { profile } from "@/data/content";
 
 const NAV_LINKS = [
-  { label: "About",      href: "#about" },
-  { label: "Education",  href: "#education" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills",     href: "#skills" },
-  { label: "Projects",   href: "#projects" },
-  { label: "Contact",    href: "#contact" },
+  { label: "About",       href: "#about" },
+  { label: "Skills",      href: "#skills" },
+  { label: "Experience",  href: "#experience" },
+  { label: "Projects",    href: "#projects" },
+  { label: "Recognition", href: "#recognition" },
+  { label: "Contact",     href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -82,7 +82,7 @@ export default function Navbar() {
             className={`pointer-events-auto font-display text-lg md:text-xl font-bold tracking-tight transition-colors duration-300 z-10 mt-1.5 ${logoColor}`}
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Aarya Shrivaastava
+            {/*Aarya Shrivaastava*/}
           </a>
 
           {/* Desktop links - FLOATING PILL */}

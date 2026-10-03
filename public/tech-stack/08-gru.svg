@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img">
+  <title>GRU</title>
+  <rect x="16" y="24" width="96" height="80" rx="18" fill="#FFEDD5" stroke="#C2410C" stroke-width="3"/>
+  <circle cx="46" cy="64" r="14" fill="#fff" stroke="#C2410C" stroke-width="3"/>
+  <circle cx="82" cy="64" r="14" fill="#C2410C"/>
+  <path d="M60 64h8" stroke="#C2410C" stroke-width="3" stroke-linecap="round"/>
+  <path d="M46 36c18-16 40 0 36 20" fill="none" stroke="#C2410C" stroke-width="3" stroke-linecap="round"/>
+  <path d="M78 28l6 8-8 2" fill="none" stroke="#C2410C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="46" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="700" fill="#C2410C">z</text>
+  <text x="82" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="12" font-weight="700" fill="#fff">r</text>
+</svg>

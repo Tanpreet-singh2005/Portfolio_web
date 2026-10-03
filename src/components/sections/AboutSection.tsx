@@ -1,7 +1,7 @@
 "use client";
 
 import FadeUp from "@/components/FadeUp";
-import { profile } from "@/data/content";
+import { profile, education } from "@/data/content";
 import {
   GlobeRegular,
   BriefcaseRegular,
@@ -99,9 +99,29 @@ export default function AboutSection() {
             ))}
           </div>
 
+          {/* Education Details */}
+          <FadeUp delay={0.5}>
+            <div className="card p-5 mt-2 flex flex-col gap-2 border border-ink/5">
+              <div className="flex items-center gap-2 mb-1">
+                <BookOpenRegular className="text-gold" fontSize={18} />
+                <h3 className="text-ink font-semibold text-base" style={{ fontFamily: "var(--font-display)" }}>
+                  Education
+                </h3>
+              </div>
+              <p className="text-deep-brown font-medium text-[15px]">{education.degree}</p>
+              <div className="flex flex-wrap items-center gap-2 text-ink/70 text-sm">
+                <span>{education.institution}</span>
+                <span className="w-1 h-1 rounded-full bg-ink/20" />
+                <span>{education.period}</span>
+                <span className="w-1 h-1 rounded-full bg-ink/20" />
+                <span>CGPA: {education.cgpa}</span>
+              </div>
+            </div>
+          </FadeUp>
+
           {/* Social links */}
           <FadeUp delay={0.6}>
-            <div className="flex items-center gap-4 flex-wrap">
+            <div className="flex items-center gap-4 flex-wrap mt-2">
               <a
                 href={profile.links.github}
                 target="_blank"
