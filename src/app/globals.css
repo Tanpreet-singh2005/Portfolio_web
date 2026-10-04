@@ -1,5 +1,5 @@
 /* ── Google Fonts — MUST be first @import ─────────────────────────────────── */
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Great+Vibes&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
 @import "tailwindcss";
 
@@ -20,7 +20,7 @@
   --font-body:    "Inter", system-ui, sans-serif;
   --font-mono:    "JetBrains Mono", "Courier New", monospace;
   --font-script:  "Great Vibes", cursive;
-  --font-edwardian: "Edwardian Script ITC", "Edwardian Script", "Great Vibes", cursive;
+  --font-edwardian: "Playfair Display", serif;
 
   --radius-card: 1rem;
   --shadow-card: 0 4px 24px 0 rgba(27, 20, 22, 0.07);
@@ -42,7 +42,7 @@
   --font-family-display: "Fraunces", Georgia, serif;
   --font-family-body:    "Inter", system-ui, sans-serif;
   --font-family-mono:    "JetBrains Mono", "Courier New", monospace;
-  --font-family-edwardian: "Edwardian Script ITC", "Edwardian Script", "Great Vibes", cursive;
+  --font-family-edwardian: "Playfair Display", serif;
 }
 
 /* ── Base Reset & Typography ─────────────────────────────────────────────── */
