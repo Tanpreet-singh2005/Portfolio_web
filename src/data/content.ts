@@ -76,7 +76,7 @@ export const profile: Profile = {
     github: "https://github.com/AaryaShrivaastava",
     linkedin: "https://linkedin.com/in/aarya-shrivaastava-7b198b2a3",
     codolio: "http://codolio.com/profile/ApexVoyager30",
-    x: "https://x.com/Aarya_S30",
+    x: "https://x.com/AaryaS_30",
   },
 };
 

@@ -174,7 +174,7 @@ export default function TechStackSection() {
             </div>
 
             <div 
-              className="hidden pb-2 text-[11px] uppercase tracking-[0.28em] text-deep-brown/50 xl:block"
+              className="hidden pb-2 text-[12px] uppercase tracking-[0.28em] font-bold text-deep-brown/50 xl:block"
               style={{ fontFamily: "var(--font-mono, monospace)" }}
             >
               Technologies I build with
