@@ -17,12 +17,16 @@ function padFrame(n: number) {
   return String(Math.round(n)).padStart(3, "0");
 }
 
+function getFramePath(side: string, frame: number) {
+  return `/frames/${side}/frame_${padFrame(frame)}.webp`;
+}
+
 interface HeadTrackerProps {
   debug?: boolean;
 }
 
 export function HeadTracker({ debug = false }: HeadTrackerProps) {
-  const imgRef = useRef<HTMLImageElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduce = useReducedMotion();
 
@@ -35,7 +39,9 @@ export function HeadTracker({ debug = false }: HeadTrackerProps) {
     mouseX: 0,
     mouseY: 0,
     isInside: false,
-    hasMoved: false
+    hasMoved: false,
+    imagesCache: {} as Record<string, HTMLImageElement>,
+    lastDrawnPath: ""
   });
 
   // Sample hero pink color once
@@ -59,20 +65,71 @@ export function HeadTracker({ debug = false }: HeadTrackerProps) {
     };
   }, []);
 
-  // Preload images efficiently
+  // Initial frame draw
   useEffect(() => {
     if (shouldReduce) return;
-    const keyFrames = [1, 15, 30, 60, 90, 105, 120];
-    keyFrames.forEach(i => {
-       const r = new window.Image(); r.src = `/frames/right/frame_${padFrame(i)}.webp`;
-       const l = new window.Image(); l.src = `/frames/left/frame_${padFrame(i)}.webp`;
-    });
-    setTimeout(() => {
-      for (let i = 1; i <= FRAMES; i++) {
-         const r = new window.Image(); r.src = `/frames/right/frame_${padFrame(i)}.webp`;
-         const l = new window.Image(); l.src = `/frames/left/frame_${padFrame(i)}.webp`;
+    const path = getFramePath("right", 1);
+    const img = new window.Image();
+    img.src = path;
+    img.onload = () => {
+      state.current.imagesCache[path] = img;
+      if (!state.current.lastDrawnPath && canvasRef.current) {
+        const ctx = canvasRef.current.getContext('2d');
+        if (ctx) {
+          canvasRef.current.width = img.naturalWidth;
+          canvasRef.current.height = img.naturalHeight;
+          ctx.drawImage(img, 0, 0);
+          state.current.lastDrawnPath = path;
+        }
       }
-    }, 1000);
+    };
+  }, [shouldReduce]);
+
+  // Preload images efficiently in a queue to avoid network bottlenecks
+  useEffect(() => {
+    if (shouldReduce) return;
+    
+    const s = state.current;
+    const loadImage = (path: string): Promise<HTMLImageElement> => {
+      return new Promise((resolve) => {
+        if (s.imagesCache[path]) return resolve(s.imagesCache[path]);
+        const img = new window.Image();
+        img.src = path;
+        img.onload = () => {
+          s.imagesCache[path] = img;
+          resolve(img);
+        };
+        img.onerror = () => resolve(img);
+      });
+    };
+
+    const loadQueue = async () => {
+      // 1. Load key frames first
+      const keyFrames = [1, 15, 30, 60, 90, 105, 120];
+      for (const i of keyFrames) {
+        await Promise.all([
+          loadImage(getFramePath("right", i)),
+          loadImage(getFramePath("left", i))
+        ]);
+      }
+      
+      // 2. Load the rest sequentially (in small batches of 4)
+      let batch = [];
+      for (let i = 1; i <= FRAMES; i++) {
+        if (!keyFrames.includes(i)) {
+           batch.push(loadImage(getFramePath("right", i)));
+           batch.push(loadImage(getFramePath("left", i)));
+           if (batch.length >= 4) {
+              await Promise.all(batch);
+              batch = [];
+           }
+        }
+      }
+      if (batch.length > 0) await Promise.all(batch);
+    };
+
+    const timer = setTimeout(loadQueue, 500);
+    return () => clearTimeout(timer);
   }, [shouldReduce]);
 
   const tick = useCallback(() => {
@@ -120,10 +177,24 @@ export function HeadTracker({ debug = false }: HeadTrackerProps) {
     while (s.currentFrame < 1) s.currentFrame += 119;
     while (s.currentFrame >= 120) s.currentFrame -= 119;
 
-    if (imgRef.current) {
+    if (canvasRef.current) {
       let renderFrame = Math.round(s.currentFrame);
       if (renderFrame === 120) renderFrame = 1;
-      imgRef.current.src = `/frames/${s.currentSide}/frame_${padFrame(renderFrame)}.webp`;
+      const path = getFramePath(s.currentSide, renderFrame);
+      const img = s.imagesCache[path];
+
+      if (img && img.complete && img.naturalWidth > 0 && path !== s.lastDrawnPath) {
+        const ctx = canvasRef.current.getContext('2d');
+        if (ctx) {
+          if (canvasRef.current.width !== img.naturalWidth) {
+             canvasRef.current.width = img.naturalWidth;
+             canvasRef.current.height = img.naturalHeight;
+          }
+          ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+          ctx.drawImage(img, 0, 0);
+          s.lastDrawnPath = path;
+        }
+      }
     }
 
     const isAtTarget = Math.abs(diff) < 0.1 && s.currentSide === targetSide;
@@ -202,13 +273,10 @@ export function HeadTracker({ debug = false }: HeadTrackerProps) {
 
   return (
     <div ref={containerRef} className="relative w-full h-full select-none flex items-end" aria-label="Interactive portrait" role="img">
-      <img
-        ref={imgRef}
-        src="/frames/right/frame_001.webp"
-        alt="Portrait of Aarya Shrivaastava"
+      <canvas
+        ref={canvasRef}
         className="w-full h-full object-cover object-bottom"
         style={maskStyle}
-        draggable={false}
       />
     </div>
   );
