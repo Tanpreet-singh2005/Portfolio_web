@@ -135,11 +135,8 @@ export const experience: ExperienceItem[] = [
     period: "June 2026 – Present",
     category: "ENGINEERING",
     bullets: [
-      "Architecting AI-driven platforms from scratch using Python and Langflow, with 5+ tool integrations to decrease manual processing time.",
-      "Collaborated with cross-functional teams to enhance UI components for AI chat applications and support system integration.",
-      "Engineered scalable RESTful APIs for high-volume daily requests, integrating core backends with 3 generative AI models.",
-      "Tested 15+ API endpoints via Postman, using AI agents to diagnose errors and reduce payload bottlenecks.",
-      "Analyzed PostgreSQL and GCP database schemas and large datasets to optimize data retrieval.",
+      "Building AI-driven platforms and backend systems using Python, Langflow, REST APIs, and cloud technologies.",
+      "Working across AI integrations, scalable APIs, databases, and product-focused engineering.",
     ],
   },
   {
