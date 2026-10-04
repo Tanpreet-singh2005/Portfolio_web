@@ -24,7 +24,7 @@ function ContactForm() {
     try {
       // NOTE: Replace the URL below with your actual Formspree endpoint URL
       // e.g., "https://formspree.io/f/xyzababc"
-      const response = await fetch(process.env.NEXT_PUBLIC_FORMSPREE_URL || "YOUR_FORMSPREE_ENDPOINT_HERE", {
+      const response = await fetch(process.env.NEXT_PUBLIC_FORMSPREE_URL || "https://formspree.io/f/mppqanoe", {
         method: "POST",
         body: formData,
         headers: {
