@@ -1,260 +1,184 @@
 "use client";
 
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import FadeUp from "@/components/FadeUp";
 
-type SkillType = {
-  no: string;
-  symbol: string;
-  name: string;
-  sub?: string;
-  icon?: any; 
-  iconImg: string;
-  type: "language" | "ai" | "backend" | "database" | "tools";
-  col: number;
-  row: number;
-  iconColor?: string;
-};
+const ALL_SKILLS = [
+  // Frontend
+  { name: "React.js", category: "frontend", icon: "⚛️", color: "#61DAFB", level: "Advanced", desc: "Hooks, Context, SSR, Client Optimization" },
+  { name: "Redux / Toolkit", category: "frontend", icon: "🔄", color: "#764ABC", level: "Proficient", desc: "Global State Trees & Action Dispatchers" },
+  { name: "JavaScript (ES6+)", category: "frontend", icon: "⚡", color: "#F7DF1E", level: "Expert", desc: "Async/Await, Closures, DOM, Modern Specs" },
+  { name: "Tailwind CSS", category: "frontend", icon: "🎨", color: "#38BDF8", level: "Expert", desc: "Responsive Design, Glassmorphism & Themes" },
+  { name: "HTML5 / CSS3", category: "frontend", icon: "🌐", color: "#E34F26", level: "Expert", desc: "Semantic Markup, Flexbox, Grid, Animations" },
 
-const skills: SkillType[] = [
-  // ROW 1
-  { no: "01", symbol: "Py", name: "Python", iconImg: "/tech-stack/01-python.svg", type: "language", col: 1, row: 1 },
-  { no: "02", symbol: "Cpp", name: "C++", iconImg: "/tech-stack/02-cpp.svg", type: "language", col: 2, row: 1 },
-  { no: "03", symbol: "C", name: "C", iconImg: "/tech-stack/03-c.svg", type: "language", col: 3, row: 1 },
-  { no: "04", symbol: "Ja", name: "Java", sub: "(Intermediate)", iconImg: "/tech-stack/04-java.svg", type: "language", col: 4, row: 1 },
-  { no: "05", symbol: "SQL", name: "SQL", iconImg: "/tech-stack/05-sql.svg", type: "language", col: 5, row: 1 },
-  
-  { no: "06", symbol: "Cn", name: "CNN", iconImg: "/tech-stack/06-cnn.svg", type: "ai", col: 9, row: 1 },
-  { no: "07", symbol: "Ls", name: "LSTM", iconImg: "/tech-stack/07-lstm.svg", type: "ai", col: 10, row: 1 },
-  { no: "08", symbol: "Gr", name: "GRU", iconImg: "/tech-stack/08-gru.svg", type: "ai", col: 11, row: 1 },
+  // Backend
+  { name: "Node.js", category: "backend", icon: "🟢", color: "#339933", level: "Advanced", desc: "Event-driven runtime & asynchronous I/O" },
+  { name: "Express.js", category: "backend", icon: "🚂", color: "#FFFFFF", level: "Advanced", desc: "Modular routers, middleware & REST endpoints" },
+  { name: "RESTful APIs", category: "backend", icon: "🔌", color: "#F97316", level: "Expert", desc: "Microservices design & payload optimization" },
+  { name: "JWT Auth & RBAC", category: "backend", icon: "🔒", color: "#EC4899", level: "Advanced", desc: "Role-Based Access & HTTP-only cookies" },
 
-  // ROW 2
-  { no: "09", symbol: "Fa", name: "FastAPI", iconImg: "/tech-stack/09-fastapi.svg", type: "backend", col: 1, row: 2 },
-  { no: "10", symbol: "Fl", name: "Flask", iconImg: "/tech-stack/10-flask.svg", type: "backend", col: 2, row: 2 },
-  { no: "11", symbol: "Lg", name: "Langflow", iconImg: "/tech-stack/11-langflow.svg", type: "backend", col: 3, row: 2 },
-  { no: "12", symbol: "Co", name: "Composio", iconImg: "/tech-stack/12-composio.svg", type: "backend", col: 4, row: 2 },
-  { no: "13", symbol: "Po", name: "Postman", iconImg: "/tech-stack/13-postman.svg", type: "backend", col: 5, row: 2 },
-  { no: "14", symbol: "Api", name: "API Integration", iconImg: "/tech-stack/14-api-integration.svg", type: "backend", col: 6, row: 2 },
+  // Databases & Cloud
+  { name: "MongoDB", category: "cloud", icon: "🍃", color: "#47A248", level: "Advanced", desc: "Mongoose ODM, Document indexing & Aggregation" },
+  { name: "MySQL", category: "cloud", icon: "🐬", color: "#4479A1", level: "Proficient", desc: "Relational schema design & normalization" },
+  { name: "AWS Cloud", category: "cloud", icon: "☁️", color: "#FF9900", level: "Certified", desc: "Certified Cloud Practitioner · S3, EC2, IAM" },
+  { name: "Vercel & Render", category: "cloud", icon: "▲", color: "#00E5FF", level: "Expert", desc: "Edge hosting, CI/CD pipelines & production sync" },
 
-  // ROW 3
-  { no: "15", symbol: "Pg", name: "PostgreSQL", iconImg: "/tech-stack/15-postgresql.svg", type: "database", col: 1, row: 3 },
-  { no: "16", symbol: "My", name: "MySQL", iconImg: "/tech-stack/16-mysql.svg", type: "database", col: 2, row: 3 },
-  { no: "17", symbol: "Aw", name: "AWS", sub: "(S3, EC2, IAM)", iconImg: "/tech-stack/17-aws.svg", type: "database", col: 3, row: 3 },
-  { no: "18", symbol: "Gc", name: "GCP", iconImg: "/tech-stack/18-gcp.svg", type: "database", col: 4, row: 3 },
-  { no: "19", symbol: "Et", name: "ETL", iconImg: "/tech-stack/19-etl.svg", type: "database", col: 5, row: 3 },
-  
-  { no: "20", symbol: "Gi", name: "Git", iconImg: "/tech-stack/20-git.svg", type: "tools", col: 6, row: 3 },
-  { no: "21", symbol: "Gh", name: "GitHub", iconImg: "/tech-stack/21-github.svg", type: "tools", col: 7, row: 3 },
-  { no: "22", symbol: "Vs", name: "VS Code", iconImg: "/tech-stack/22-vscode.svg", type: "tools", col: 8, row: 3 },
-  { no: "23", symbol: "Ve", name: "Vercel", iconImg: "/tech-stack/23-vercel.svg", type: "tools", col: 9, row: 3 },
-
-  // ROW 4
-  { no: "24", symbol: "Do", name: "Docker", iconImg: "/tech-stack/24-docker.svg", type: "tools", col: 7, row: 4 },
-  { no: "25", symbol: "Cd", name: "Codex", iconImg: "/tech-stack/25-codex.svg", type: "tools", col: 8, row: 4 },
-  { no: "26", symbol: "Cu", name: "Cursor", iconImg: "/tech-stack/26-cursor.svg", type: "tools", col: 9, row: 4 },
-  { no: "27", symbol: "Ag", name: "Antigravity", iconImg: "/tech-stack/agy.webp", type: "tools", col: 10, row: 4 },
-  { no: "28", symbol: "Op", name: "OpenCode", iconImg: "/tech-stack/28-opencode.svg", type: "tools", col: 11, row: 4 },
+  // Languages & Core
+  { name: "Java", category: "foundations", icon: "☕", color: "#ED8B00", level: "Advanced", desc: "OOP principles, collections & DSA solutions" },
+  { name: "SQL", category: "foundations", icon: "📊", color: "#00758F", level: "Advanced", desc: "Complex joins, indexing & query tuning" },
+  { name: "Git & GitHub", category: "foundations", icon: "🐙", color: "#F05032", level: "Expert", desc: "Branching workflows, version control & PR reviews" },
+  { name: "Postman", category: "foundations", icon: "📮", color: "#FF6C37", level: "Expert", desc: "API testing, environment mocking & assertions" },
+  { name: "160+ DSA Problems", category: "foundations", icon: "🧠", color: "#34D399", level: "Milestone", desc: "Solved on GeeksforGeeks (Trees, DP, Graphs)" },
 ];
 
-const colors = {
-  language: { bg: "rgba(244, 224, 183, 1)", border: "rgba(198, 166, 111, 0.28)", accent: "#d5ae61" },
-  backend: { bg: "rgba(207, 222, 243, 1)", border: "rgba(137, 165, 204, 0.28)", accent: "#6d9ee8" },
-  ai: { bg: "rgba(247, 207, 207, 1)", border: "rgba(210, 145, 155, 0.30)", accent: "#d68191" },
-  database: { bg: "rgba(216, 230, 201, 1)", border: "rgba(145, 175, 125, 0.28)", accent: "#86a96f" },
-  tools: { bg: "rgba(226, 211, 237, 1)", border: "rgba(168, 140, 190, 0.28)", accent: "#9b7ab1" },
-};
+const CATEGORIES = [
+  { id: "all", label: "All Technologies" },
+  { id: "frontend", label: "Frontend & UI" },
+  { id: "backend", label: "Backend & Security" },
+  { id: "cloud", label: "Databases & Cloud" },
+  { id: "foundations", label: "Languages & DSA" },
+];
 
-function SkillCard({ skill, className = "" }: { skill: SkillType, className?: string }) {
-  const Icon = skill.icon;
-  const color = colors[skill.type];
-
-  return (
-    <div
-      className={`group relative rounded-[18px] border p-5 transition-transform duration-300 hover:-translate-y-1 ${className}`}
-      style={{
-        background: color.bg,
-        borderColor: color.border,
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
-        boxShadow: "0 10px 30px rgba(70,45,35,0.05)",
-        height: "148px",
-        minHeight: "148px",
-        maxHeight: "148px",
-        width: "100%",
-        maxWidth: "185px", // allow up to 185px
-        margin: "0 auto",
-      }}
-    >
-      <span
-        className="absolute left-5 top-4 text-[12px] tracking-[0.08em]"
-        style={{ color: color.accent, fontFamily: "var(--font-mono, monospace)" }}
-      >
-        {skill.no}
-      </span>
-
-      <div className="absolute right-5 top-5 opacity-90 transition-transform duration-300 group-hover:scale-110">
-        {skill.iconImg ? (
-          <img 
-            src={skill.iconImg} 
-            alt={`${skill.name} logo`} 
-            style={{ width: "32px", height: "32px", objectFit: "contain" }} 
-            className="tech-logo"
-          />
-        ) : (
-          Icon && <Icon size={32} strokeWidth={1.5} color={skill.iconColor || color.accent} />
-        )}
-      </div>
-
-      <div className="absolute bottom-5 left-5 right-5">
-        <div
-          className="text-[31px] leading-none tracking-[-0.04em]"
-          style={{ color: "#251b19", fontFamily: "var(--font-display, serif)" }}
-        >
-          {skill.symbol}
-        </div>
-
-        <div className="mt-2.5 font-sans text-[13px] leading-tight text-[#5f5550]">
-          {skill.name}
-
-          {skill.sub && (
-            <span className="block mt-0.5 text-[10px] text-[#877c75]">
-              {skill.sub}
-            </span>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function LegendItem({ type, label }: { type: keyof typeof colors; label: string }) {
-  const color = colors[type];
-
-  return (
-    <div className="flex items-center gap-2.5 whitespace-nowrap">
-      <span
-        className="h-3 w-3 rounded-full border"
-        style={{
-          background: color.bg,
-          borderColor: color.accent,
-        }}
-      />
-      <span 
-        className="text-[10px] uppercase tracking-[0.16em] text-ink/90 font-bold"
-        style={{ fontFamily: "var(--font-mono, monospace)" }}
-      >
-        {label}
-      </span>
-    </div>
-  );
-}
+const MARQUEE_ITEMS = [
+  "React.js", "Node.js", "Express.js", "MongoDB", "AWS Cloud Practitioner",
+  "Redux Toolkit", "Java", "JavaScript", "SQL", "JWT Authentication",
+  "REST APIs", "Tailwind CSS", "160+ DSA Solved", "Agile / Scrum", "Postman", "Git & GitHub"
+];
 
 export default function TechStackSection() {
+  const [activeTab, setActiveTab] = useState("all");
+
+  const filteredSkills = activeTab === "all" 
+    ? ALL_SKILLS 
+    : ALL_SKILLS.filter(s => s.category === activeTab);
+
   return (
     <section
       id="skills"
-      className="relative overflow-hidden w-full section-band-2 py-24 md:py-32"
+      aria-label="Technical Skills"
+      className="w-full section-band-1 py-24 md:py-36 relative overflow-hidden"
     >
-      <div className="max-w-[1400px] mx-auto px-4 md:px-6">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
         <FadeUp>
-          <div className="mb-14 flex items-end justify-between">
-            <div>
-              <div 
-                className="mb-5 text-[11px] uppercase tracking-[0.28em] text-deep-brown/60"
-                style={{ fontFamily: "var(--font-mono, monospace)" }}
-              >
-                {/*02 · Skills*/}
-              </div>
+          <div className="flex items-center gap-2 mb-4">
+            <span className="w-2 h-2 rounded-full bg-cyan-400" />
+            <span className="font-mono text-xs tracking-widest uppercase text-cyan-300 font-semibold">
+              02 · Technical Repertoire
+            </span>
+          </div>
+        </FadeUp>
 
-              <h2 
-                className="text-ink leading-none mt-2 mb-4"
-                style={{ fontFamily: "var(--font-edwardian)", fontSize: "clamp(1.9rem, 4.5vw, 3.4rem)" }}
-              >
-                Skills
+        <FadeUp delay={0.08}>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                Architectural Tech Stack
               </h2>
+              <p className="text-slate-400 text-base sm:text-lg mt-3 max-w-xl">
+                The languages, frameworks, and cloud services powering my production platforms and enterprise intern modules.
+              </p>
             </div>
 
-            <div 
-              className="hidden pb-2 text-[12px] uppercase tracking-[0.28em] font-bold text-deep-brown/50 xl:block"
-              style={{ fontFamily: "var(--font-mono, monospace)" }}
-            >
-              Technologies I build with
-              <span className="ml-3">—</span>
+            {/* Filter Pills with motion layout */}
+            <div className="flex flex-wrap gap-1.5 p-1.5 rounded-2xl bg-slate-900/90 border border-slate-800 backdrop-blur-xl">
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveTab(cat.id)}
+                  className={`relative px-4 py-2 rounded-xl font-mono text-xs font-semibold transition-all cursor-pointer ${
+                    activeTab === cat.id
+                      ? "text-cyan-300"
+                      : "text-slate-400 hover:text-slate-200"
+                  }`}
+                >
+                  <span className="relative z-10">{cat.label}</span>
+                  {activeTab === cat.id && (
+                    <motion.div
+                      layoutId="tech-filter-pill"
+                      className="absolute inset-0 rounded-xl bg-cyan-500/20 border border-cyan-500/40 shadow-[0_0_15px_rgba(56,189,248,0.25)]"
+                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                    />
+                  )}
+                </button>
+              ))}
             </div>
           </div>
         </FadeUp>
 
-        {/* Desktop Grid (>= 1200px) */}
-        <div 
-          className="hidden xl:grid gap-3 items-start"
-          style={{ 
-            gridTemplateColumns: "repeat(11, minmax(0, 1fr))",
-            alignItems: "start",
-          }}
+        {/* Dynamic Skills Bento Grid with Animated Transitions */}
+        <motion.div 
+          layout
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-16"
         >
-          {skills.map((skill) => (
-            <FadeUp 
-              key={skill.no} 
-              delay={0.05 + (skill.row * 0.1) + (skill.col * 0.02)}
-              className="w-full flex"
-              style={{ 
-                gridColumnStart: skill.col,
-                gridRowStart: skill.row,
-                alignSelf: "start",
-              }}
-            >
-              <SkillCard skill={skill} />
-            </FadeUp>
-          ))}
-          
-        </div>
-
-        {/* Laptop Grid (900px - 1199px) */}
-        <div className="hidden lg:grid xl:hidden grid-cols-8 gap-3 items-start">
-          {skills.map((skill) => {
-            // Compress 11 cols to 8 cols dynamically for laptop
-            let newCol = skill.col;
-            let newRow = skill.row;
-            if (skill.col > 8) {
-              newCol = skill.col - 3;
-              newRow = skill.row + (skill.col % 2 === 0 ? 1 : 0);
-            }
-            return (
-              <FadeUp 
-                key={skill.no + "-laptop"} 
-                delay={0.05 + (newRow * 0.1) + (newCol * 0.02)}
-                className="w-full flex"
-                style={{ alignSelf: "start" }}
+          <AnimatePresence>
+            {filteredSkills.map((skill) => (
+              <motion.div
+                key={skill.name}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                className="group relative p-5 rounded-2xl bg-[#0B111E]/90 border border-slate-700/60 hover:border-cyan-500/50 hover:bg-[#0D1526] transition-all duration-300 flex flex-col justify-between h-full shadow-[0_10px_25px_rgba(0,0,0,0.4)]"
               >
-                <SkillCard skill={skill} />
-              </FadeUp>
-            );
-          })}
-        </div>
+                {/* Ambient glow accent in card corner */}
+                <div 
+                  className="absolute -top-6 -right-6 w-24 h-24 rounded-full blur-2xl opacity-0 group-hover:opacity-70 transition-opacity pointer-events-none"
+                  style={{ backgroundColor: skill.color }}
+                />
 
-        {/* Tablet / Mobile Grid (< 900px) */}
-        <div className="grid lg:hidden grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 items-start">
-          {skills.map((skill, i) => (
-            <FadeUp key={skill.no + "-mobile"} delay={0.05 + (i * 0.02)} className="w-full flex" style={{ alignSelf: "start" }}>
-              <SkillCard skill={skill} />
-            </FadeUp>
-          ))}
-        </div>
-        
-        {/* Legend */}
-        <FadeUp delay={0.4} className="mt-14 flex items-start">
-          <div
-            className="inline-flex flex-wrap items-center gap-x-7 gap-y-3 rounded-full border px-7 py-4"
-            style={{
-              background: "#ffffff",
-              borderColor: "rgba(170,145,120,0.25)",
-              boxShadow: "0 8px 30px rgba(75,50,35,0.08)",
-            }}
-          >
-            <LegendItem type="language" label="Languages" />
-            <LegendItem type="backend" label="Backend & APIs" />
-            <LegendItem type="ai" label="AI / ML" />
-            <LegendItem type="database" label="Databases & Cloud" />
-            <LegendItem type="tools" label="Tools" />
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-2xl group-hover:scale-115 transition-transform duration-200 inline-block">{skill.icon}</span>
+                    <span className="px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 font-mono text-[10px] text-slate-300 font-semibold group-hover:border-cyan-500/30">
+                      {skill.level}
+                    </span>
+                  </div>
+
+                  <h3 className="text-lg font-bold text-white mb-1 group-hover:text-cyan-300 transition-colors flex items-center gap-2">
+                    <span>{skill.name}</span>
+                    <span 
+                      className="w-2 h-2 rounded-full inline-block shrink-0 shadow-sm" 
+                      style={{ backgroundColor: skill.color }} 
+                    />
+                  </h3>
+
+                  <p className="text-slate-400 text-xs leading-relaxed">
+                    {skill.desc}
+                  </p>
+                </div>
+
+                <div className="pt-4 mt-4 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-500 group-hover:text-slate-300 transition-colors">
+                  <span className="uppercase tracking-wider">{skill.category}</span>
+                  <span className="text-cyan-400">★ Ready</span>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Infinite Live Animated Marquee Strip */}
+        <FadeUp delay={0.25}>
+          <div className="relative py-4 rounded-2xl bg-[#080D1A]/90 border border-slate-800 shadow-2xl overflow-hidden">
+            {/* Fade edges */}
+            <div className="absolute left-0 inset-y-0 w-20 bg-gradient-to-r from-[#080D1A] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 inset-y-0 w-20 bg-gradient-to-l from-[#080D1A] to-transparent z-10 pointer-events-none" />
+
+            <div className="animate-marquee flex items-center gap-3">
+              {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, idx) => (
+                <div
+                  key={`${item}-${idx}`}
+                  className="px-4 py-2 rounded-xl bg-slate-900/90 border border-white/10 hover:border-cyan-400/50 hover:text-cyan-300 font-mono text-xs text-slate-300 whitespace-nowrap transition-all flex items-center gap-2.5 shrink-0 shadow-sm"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </FadeUp>
 
