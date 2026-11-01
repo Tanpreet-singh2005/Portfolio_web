@@ -1,13 +1,21 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
 import { profile } from "@/data/content";
-import {
-  ArrowRightRegular,
-  RocketRegular
-} from "@fluentui/react-icons";
+import { FaGithub, FaLinkedin, FaAws } from "react-icons/fa6";
+import { SiGeeksforgeeks, SiReact, SiNodedotjs, SiMongodb } from "react-icons/si";
+import { ArrowDown, Check, Copy, ExternalLink, ShieldCheck, Sparkles, Terminal, Layers, Award } from "lucide-react";
 
 export default function HeroSection() {
+  const [copied, setCopied] = useState(false);
+  const [activeTab, setActiveTab] = useState<"spec" | "stack" | "honors">("spec");
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(profile.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   const scrollToProjects = () => {
     document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -20,193 +28,331 @@ export default function HeroSection() {
     <section 
       id="home" 
       aria-label="Hero — Introduction" 
-      className="relative w-full min-h-[92vh] pt-28 pb-16 flex items-center justify-center overflow-hidden"
+      className="relative w-full pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden"
     >
-      <div className="max-w-[1300px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14 relative z-10">
+      <div className="max-w-[1320px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-14 relative z-10">
         
-        {/* ── LEFT: Clean, Concise & High Impact ─────────────────────── */}
-        <div className="w-full lg:w-[58%] flex flex-col items-start">
+        {/* ── LEFT: Typographic Elegance & Narrative ─────────────────── */}
+        <div className="w-full lg:w-[56%] flex flex-col items-start">
           
-          {/* Subtle status beacon */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 backdrop-blur-xl mb-6 shadow-sm"
-          >
+          {/* Status Badge with Subtle Luminous Dot */}
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.09] shadow-sm mb-7 backdrop-blur-sm">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
             </span>
-            <span className="font-mono text-xs font-semibold text-cyan-300">
-              Ex-SDE Intern @ Grasim Industries · CGPA 9.29
+            <span className="font-mono text-xs text-slate-300 font-medium">
+              Available for SDE &amp; Full-Stack Roles · 2026/2027
             </span>
-          </motion.div>
+          </div>
 
-          {/* Clean Name & Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.08, duration: 0.5 }}
-            className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold tracking-tight text-white leading-[1.1] mb-4"
-          >
+          {/* High-Impact Headline with Subtle Metallic Shimmer */}
+          <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold tracking-tight text-white leading-[1.1] mb-6">
             Hi, I&rsquo;m{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-300 to-sky-200">
               Tanpreet Singh
             </span>
-          </motion.h1>
+            .
+            <span className="block text-slate-200 text-2xl sm:text-3xl lg:text-[34px] font-semibold mt-2.5 tracking-normal">
+              Full-Stack Software Engineer
+            </span>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.14, duration: 0.5 }}
-            className="text-xl sm:text-2xl font-semibold text-slate-200 mb-5"
-          >
-            Full-Stack Software Engineer
-          </motion.p>
-
-          {/* Tight, punchy summary (2 sentences max) */}
-          <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-slate-300 text-base sm:text-[17px] leading-relaxed max-w-xl mb-8"
-          >
-            CS undergraduate at VIT Bhopal who shipped 3 production full-stack platforms and interned at Grasim Industries (Aditya Birla Group). Building scalable web systems with React, Node.js, Express, MongoDB, and AWS.
-          </motion.p>
+          {/* Narrative Paragraph */}
+          <p className="text-slate-300 text-base sm:text-[17px] leading-relaxed max-w-xl mb-8">
+            Computer Science undergraduate at <strong className="text-white font-semibold">VIT Bhopal (CGPA 9.29)</strong> and ex-Software Developer Intern at <strong className="text-white font-semibold">Grasim Industries (Aditya Birla Group)</strong>. I architect reliable web platforms using React, Node.js, Express, MongoDB, and AWS.
+          </p>
 
           {/* Action CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.26, duration: 0.5 }}
-            className="flex flex-wrap items-center gap-3.5 mb-8 w-full sm:w-auto"
-          >
+          <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto mb-9">
             <button
               onClick={scrollToProjects}
-              className="px-6 h-12 rounded-xl bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 text-slate-950 font-bold text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-[0_0_25px_rgba(56,189,248,0.35)] flex items-center justify-center gap-2 cursor-pointer"
+              className="px-6 h-11 rounded-xl bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 text-white font-semibold text-xs uppercase tracking-wider hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer shadow-[0_0_20px_rgba(56,189,248,0.25)]"
             >
-              <span>View Projects</span>
-              <ArrowRightRegular fontSize={16} />
+              <span>Explore Projects</span>
+              <ArrowDown size={14} />
             </button>
 
             <button
-              onClick={scrollToContact}
-              className="px-5 h-12 rounded-xl bg-slate-900/90 border border-slate-700/80 hover:border-cyan-400/60 text-slate-200 hover:text-white font-semibold text-xs uppercase tracking-wider hover:bg-slate-800 transition-all cursor-pointer"
+              onClick={handleCopyEmail}
+              className="px-4 h-11 rounded-xl bg-white/[0.04] border border-white/10 hover:border-white/25 text-slate-300 hover:text-white font-mono text-xs transition-colors flex items-center gap-2 cursor-pointer"
+              title="Click to copy email"
             >
-              Contact Me
+              {copied ? (
+                <>
+                  <Check size={14} className="text-emerald-400" />
+                  <span className="text-emerald-400 font-medium">Copied to Clipboard!</span>
+                </>
+              ) : (
+                <>
+                  <Copy size={14} />
+                  <span>tanpreetsingh7007@gmail.com</span>
+                </>
+              )}
             </button>
+          </div>
 
+          {/* Social Profiles Row */}
+          <div className="flex flex-wrap items-center gap-2.5 pt-6 border-t border-white/[0.08] w-full text-xs font-mono">
+            <span className="text-slate-500 uppercase tracking-wider text-[11px] mr-1">
+              Connect:
+            </span>
             <a
               href={profile.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 h-12 rounded-xl bg-white/5 border border-white/10 hover:border-white/25 text-slate-300 hover:text-white text-xs font-mono font-medium transition-all flex items-center justify-center gap-2"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.08] hover:border-white/25 text-slate-300 hover:text-white transition-colors"
             >
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
+              <FaGithub size={13} />
               <span>GitHub</span>
             </a>
-          </motion.div>
-
-          {/* Clean 3-Item Metrics Bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.32, duration: 0.5 }}
-            className="flex items-center gap-6 pt-5 border-t border-white/10 text-slate-300 font-mono text-xs"
-          >
-            <div>
-              <span className="text-cyan-400 font-bold text-base block font-sans">9.29</span>
-              <span className="text-slate-400 text-[11px]">CGPA (VIT)</span>
-            </div>
-            <div className="w-px h-6 bg-white/10" />
-            <div>
-              <span className="text-emerald-400 font-bold text-base block font-sans">160+</span>
-              <span className="text-slate-400 text-[11px]">DSA Solved</span>
-            </div>
-            <div className="w-px h-6 bg-white/10" />
-            <div>
-              <span className="text-amber-400 font-bold text-base block font-sans">+35%</span>
-              <span className="text-slate-400 text-[11px]">Query Speedup</span>
-            </div>
-          </motion.div>
+            <a
+              href={profile.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.08] hover:border-white/25 text-slate-300 hover:text-white transition-colors"
+            >
+              <FaLinkedin size={13} />
+              <span>LinkedIn</span>
+            </a>
+            <a
+              href={profile.links.gfg}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.08] hover:border-white/25 text-slate-300 hover:text-white transition-colors"
+            >
+              <SiGeeksforgeeks size={13} />
+              <span>GFG (160+)</span>
+            </a>
+          </div>
 
         </div>
 
-        {/* ── RIGHT: Compact, Lightweight & Modern Card ───────────── */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="w-full lg:w-[40%] flex flex-col"
-        >
-          {/* Lightweight Glass Highlight Card */}
-          <div className="p-6 sm:p-7 rounded-2xl bg-[#0B111E]/80 border border-slate-700/70 shadow-[0_15px_35px_rgba(0,0,0,0.5)] backdrop-blur-xl relative overflow-hidden">
-            {/* Subtle top edge glow */}
-            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-cyan-500 to-indigo-500 opacity-80" />
+        {/* ── RIGHT: Interactive Bento System Showcase ───────────────── */}
+        <div className="w-full lg:w-[44%] flex flex-col">
+          <div className="glass-card-interactive overflow-hidden border border-white/[0.1] shadow-2xl">
+            
+            {/* Interactive Tab Switcher Bar */}
+            <div className="flex items-center justify-between px-4 py-3 bg-[#0A0E1A] border-b border-white/[0.08]">
+              <div className="flex items-center gap-1 p-0.5 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+                <button
+                  onClick={() => setActiveTab("spec")}
+                  className={`px-3 py-1 rounded-md font-mono text-[11px] font-medium transition-colors cursor-pointer ${
+                    activeTab === "spec"
+                      ? "bg-white/10 text-white font-semibold shadow-sm"
+                      : "text-slate-400 hover:text-slate-200"
+                  }`}
+                >
+                  Overview
+                </button>
+                <button
+                  onClick={() => setActiveTab("stack")}
+                  className={`px-3 py-1 rounded-md font-mono text-[11px] font-medium transition-colors cursor-pointer ${
+                    activeTab === "stack"
+                      ? "bg-white/10 text-white font-semibold shadow-sm"
+                      : "text-slate-400 hover:text-slate-200"
+                  }`}
+                >
+                  Stack
+                </button>
+                <button
+                  onClick={() => setActiveTab("honors")}
+                  className={`px-3 py-1 rounded-md font-mono text-[11px] font-medium transition-colors cursor-pointer ${
+                    activeTab === "honors"
+                      ? "bg-white/10 text-white font-semibold shadow-sm"
+                      : "text-slate-400 hover:text-slate-200"
+                  }`}
+                >
+                  Honors
+                </button>
+              </div>
 
-            {/* Header */}
-            <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/10">
-              <span className="font-mono text-xs font-bold text-cyan-400 uppercase tracking-wider">
-                Snapshot
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
+                <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
+                <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
+              </div>
+            </div>
+
+            {/* TAB 1: System Spec & Verified Metrics */}
+            {activeTab === "spec" && (
+              <div className="p-5 sm:p-6 space-y-5">
+                
+                {/* 4 Metric Tiles with Subtle Color Harmonies */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] transition-colors">
+                    <span className="font-mono text-[11px] text-slate-400 uppercase tracking-wider block">
+                      VIT Bhopal CGPA
+                    </span>
+                    <div className="text-2xl font-bold text-white mt-1 font-mono">
+                      9.29 <span className="text-xs text-slate-500 font-normal">/ 10</span>
+                    </div>
+                    <span className="text-[11px] text-sky-400/90 font-mono block mt-0.5">Top Academic Tier</span>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] transition-colors">
+                    <span className="font-mono text-[11px] text-slate-400 uppercase tracking-wider block">
+                      DSA Solved
+                    </span>
+                    <div className="text-2xl font-bold text-white mt-1 font-mono">
+                      160+
+                    </div>
+                    <span className="text-[11px] text-emerald-400 font-mono block mt-0.5">GeeksforGeeks</span>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] transition-colors">
+                    <span className="font-mono text-[11px] text-slate-400 uppercase tracking-wider block">
+                      Query Optimization
+                    </span>
+                    <div className="text-2xl font-bold text-emerald-400 mt-1 font-mono">
+                      +35%
+                    </div>
+                    <span className="text-[11px] text-slate-400 font-mono block mt-0.5">API Latency Cut</span>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] transition-colors">
+                    <span className="font-mono text-[11px] text-slate-400 uppercase tracking-wider block">
+                      Shipped Platforms
+                    </span>
+                    <div className="text-2xl font-bold text-sky-400 mt-1 font-mono">
+                      3 Live
+                    </div>
+                    <span className="text-[11px] text-slate-400 font-mono block mt-0.5">FinTech &amp; Platforms</span>
+                  </div>
+                </div>
+
+                {/* Internship Experience Line */}
+                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="font-semibold text-white text-xs sm:text-sm">
+                      Grasim Industries (Aditya Birla Group)
+                    </span>
+                    <span className="font-mono text-[10px] text-slate-400 px-2 py-0.5 rounded bg-white/[0.04]">
+                      Jun – Jul 2026
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    Software Developer Intern · Engineered internal web tools supporting 50+ engineers, tuned query logic reducing API latency by 35%, and closed security endpoints with JWT/RBAC.
+                  </p>
+                </div>
+
+                {/* Live Architecture Indicator */}
+                <div className="flex items-center justify-between p-3 rounded-lg bg-sky-500/10 border border-sky-500/20 text-xs">
+                  <div className="flex items-center gap-2">
+                    <Sparkles size={14} className="text-sky-400" />
+                    <span className="font-medium text-sky-200">Featured System: Zerodha Trading Simulator</span>
+                  </div>
+                  <button 
+                    onClick={scrollToProjects}
+                    className="text-white hover:text-sky-300 font-mono text-[11px] font-semibold transition-colors cursor-pointer"
+                  >
+                    View ↗
+                  </button>
+                </div>
+
+              </div>
+            )}
+
+            {/* TAB 2: Core Stack Preview */}
+            {activeTab === "stack" && (
+              <div className="p-5 sm:p-6 space-y-4">
+                <span className="font-mono text-[11px] text-slate-400 uppercase tracking-wider block">
+                  Core Technologies
+                </span>
+                
+                <div className="grid grid-cols-2 gap-2.5 font-mono text-xs">
+                  <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.06] flex items-center gap-2.5">
+                    <SiReact size={18} className="text-[#61DAFB]" />
+                    <div>
+                      <div className="font-semibold text-white text-[13px]">React.js</div>
+                      <div className="text-[10px] text-slate-400">Context, Hooks, SSR</div>
+                    </div>
+                  </div>
+
+                  <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.06] flex items-center gap-2.5">
+                    <SiNodedotjs size={18} className="text-[#5FA04E]" />
+                    <div>
+                      <div className="font-semibold text-white text-[13px]">Node.js</div>
+                      <div className="text-[10px] text-slate-400">Express &amp; APIs</div>
+                    </div>
+                  </div>
+
+                  <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.06] flex items-center gap-2.5">
+                    <SiMongodb size={18} className="text-[#47A248]" />
+                    <div>
+                      <div className="font-semibold text-white text-[13px]">MongoDB</div>
+                      <div className="text-[10px] text-slate-400">Aggregation &amp; Index</div>
+                    </div>
+                  </div>
+
+                  <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.06] flex items-center gap-2.5">
+                    <FaAws size={18} className="text-[#FF9900]" />
+                    <div>
+                      <div className="font-semibold text-white text-[13px]">AWS Cloud</div>
+                      <div className="text-[10px] text-slate-400">Certified Practitioner</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] text-xs text-slate-300">
+                  <span className="font-mono text-slate-400 text-[11px] block mb-1.5 uppercase tracking-wider">Secondary Repertoire</span>
+                  <div className="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                    {["Java", "SQL", "Redux Toolkit", "JWT Auth", "REST APIs", "Tailwind CSS", "Git & GitHub", "Postman"].map((t) => (
+                      <span key={t} className="px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] text-slate-300">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* TAB 3: Academic Honors & Standing */}
+            {activeTab === "honors" && (
+              <div className="p-5 sm:p-6 space-y-3.5">
+                <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-bold text-white text-sm">VIT Bhopal University</span>
+                    <span className="font-mono text-xs text-sky-400 font-bold">9.29 CGPA</span>
+                  </div>
+                  <p className="text-xs text-slate-400">B.Tech Computer Science &amp; Engineering · Top Academic Percentile</p>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-bold text-white text-sm">NPTEL Marketing Analytics</span>
+                    <span className="font-mono text-xs text-amber-400 font-bold">97% (Gold)</span>
+                  </div>
+                  <p className="text-xs text-slate-400">Awarded Top 5% Performer nationwide by IIT Kharagpur</p>
+                </div>
+
+                <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-bold text-white text-sm">Fatima Convent H.S. School</span>
+                    <span className="font-mono text-xs text-emerald-400 font-bold">95.6% / 91.4%</span>
+                  </div>
+                  <p className="text-xs text-slate-400">Class X: 95.6% · Class XII: 91.4% (PCM &amp; Computer Science)</p>
+                </div>
+              </div>
+            )}
+
+            {/* Spec Sheet Footer */}
+            <div className="px-5 py-3.5 bg-[#0A0E1A] border-t border-white/[0.08] flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span className="flex items-center gap-1.5 text-emerald-400">
+                <ShieldCheck size={14} />
+                <span>AWS Certified Cloud Practitioner</span>
               </span>
-              <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 font-medium">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Ready for SDE Roles</span>
-              </div>
-            </div>
-
-            {/* Highlights List */}
-            <div className="space-y-4 text-xs">
-              
-              {/* Highlight 1 */}
-              <div className="p-3 rounded-xl bg-slate-900/60 border border-white/5 flex items-start gap-3">
-                <div className="w-7 h-7 rounded-lg bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-xs shrink-0 mt-0.5">
-                  🏢
-                </div>
-                <div>
-                  <div className="font-semibold text-white text-[13px]">Grasim Industries (Aditya Birla Group)</div>
-                  <div className="text-slate-400 text-[11px] mt-0.5">Software Developer Intern · +35% query speedup, 99.2% stability</div>
-                </div>
-              </div>
-
-              {/* Highlight 2 */}
-              <div className="p-3 rounded-xl bg-slate-900/60 border border-white/5 flex items-start gap-3">
-                <div className="w-7 h-7 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-300 text-xs shrink-0 mt-0.5">
-                  🚀
-                </div>
-                <div>
-                  <div className="font-semibold text-white text-[13px]">3 Deployed Full-Stack Applications</div>
-                  <div className="text-slate-400 text-[11px] mt-0.5">Zerodha Simulator · TanRoam Rentals · Job Portal Hub</div>
-                </div>
-              </div>
-
-              {/* Highlight 3 */}
-              <div className="p-3 rounded-xl bg-slate-900/60 border border-white/5 flex items-start gap-3">
-                <div className="w-7 h-7 rounded-lg bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-300 text-xs shrink-0 mt-0.5">
-                  ☁️
-                </div>
-                <div>
-                  <div className="font-semibold text-white text-[13px]">AWS Certified Cloud Practitioner</div>
-                  <div className="text-slate-400 text-[11px] mt-0.5">MERN Architecture · RESTful APIs · JWT &amp; RBAC</div>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Bottom Quick Pill Badges */}
-            <div className="flex flex-wrap gap-1.5 pt-4 mt-5 border-t border-white/10 font-mono text-[10px] text-slate-300">
-              <span className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">React</span>
-              <span className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">Node.js</span>
-              <span className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">MongoDB</span>
-              <span className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">Express</span>
-              <span className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10">AWS</span>
+              <button 
+                onClick={scrollToContact}
+                className="text-white hover:text-sky-300 font-sans font-semibold transition-colors cursor-pointer flex items-center gap-1"
+              >
+                <span>Connect</span>
+                <span className="text-sky-400">→</span>
+              </button>
             </div>
 
           </div>
-        </motion.div>
+        </div>
 
       </div>
     </section>

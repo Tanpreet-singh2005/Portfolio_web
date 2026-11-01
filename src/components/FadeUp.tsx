@@ -13,8 +13,8 @@ interface FadeUpProps {
 
 /**
  * FadeUp
- * Reusable reveal animation: fade in + 16px rise.
- * Skips animation when prefers-reduced-motion is set.
+ * Lightweight reveal animation: subtle fade + 10px translate.
+ * Zero 3D transforms, hardware-accelerated, instant 60/120fps.
  */
 export default function FadeUp({
   children,
@@ -29,13 +29,13 @@ export default function FadeUp({
     <motion.div
       className={className}
       style={style}
-      initial={shouldReduce ? false : { opacity: 0, y: 16 }}
+      initial={shouldReduce ? false : { opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, margin: "-60px" }}
+      viewport={{ once, margin: "-40px" }}
       transition={{
-        duration: 0.55,
+        duration: 0.35,
         delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease: [0.16, 1, 0.3, 1],
       }}
     >
       {children}

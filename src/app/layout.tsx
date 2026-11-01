@@ -24,9 +24,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="bg-[#080C14] text-[#F8FAFC] antialiased selection:bg-cyan-500/20 selection:text-cyan-300">
-        {/* Subtle noise grain texture overlay */}
-        <div className="grain-overlay" aria-hidden="true" />
+      <body className="bg-[#07090E] text-[#F8FAFC] antialiased selection:bg-sky-500/25 selection:text-sky-200">
         {children}
       </body>
     </html>

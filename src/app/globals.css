@@ -1,36 +1,32 @@
-/* ── Google Fonts — MUST be first @import ─────────────────────────────────── */
+/* ── Google Fonts ─────────────────────────────────────────────────────────── */
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 
 @import "tailwindcss";
 
-/* ── Design Tokens (Consistent Dark Theme) ────────────────────────────────── */
+/* ── Modern Design Tokens (Rich Midnight Obsidian Palette) ────────────────── */
 :root {
-  --bg-base:        #070A12;
-  --bg-surface:     #0B111E;
-  --bg-surface-elevated: #10192D;
+  --bg-base:        #080C16;
+  --bg-surface:     #0D1322;
+  --bg-elevated:    #121A2E;
+  --bg-card:        #0F1527;
   
   --text-primary:   #F8FAFC;
   --text-secondary: #94A3B8;
   --text-muted:     #64748B;
   
-  --cyan:           #38BDF8;
-  --cyan-glow:      rgba(56, 189, 248, 0.35);
-  --emerald:        #34D399;
-  --emerald-glow:   rgba(52, 211, 153, 0.35);
-  --violet:         #818CF8;
-  --amber:          #FBBF24;
-  --blue:           #60A5FA;
+  --accent-cyan:    #38BDF8;
+  --accent-blue:    #60A5FA;
+  --accent-indigo:  #818CF8;
+  --accent-emerald: #34D399;
+  --accent-amber:   #FBBF24;
 
   --border-subtle:  rgba(255, 255, 255, 0.08);
-  --border-focus:   rgba(56, 189, 248, 0.5);
-  --border-card:    rgba(255, 255, 255, 0.1);
+  --border-hover:   rgba(96, 165, 250, 0.35);
+  --border-highlight: rgba(255, 255, 255, 0.15);
 
-  --font-display:   "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-body:      "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-mono:      "JetBrains Mono", monospace;
-
-  --radius-card:    1.25rem;
-  --shadow-card:    0 15px 35px -10px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.07);
+  --font-display:   "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body:      "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono:      "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 /* ── Base Reset & Body ────────────────────────────────────────────────────── */
@@ -52,12 +48,13 @@ body {
   background-color: var(--bg-base);
   min-height: 100dvh;
   overflow-x: hidden;
+  text-rendering: optimizeLegibility;
 }
 
 /* ── Focus Styles ─────────────────────────────────────────────────────────── */
 :focus-visible {
-  outline: 2px solid var(--cyan);
-  outline-offset: 3px;
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
   border-radius: 8px;
 }
 
@@ -66,141 +63,61 @@ body {
   scroll-margin-top: 88px;
 }
 
-/* ── Ambient Film Grain ──────────────────────────────────────────────────── */
-.grain-overlay {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  opacity: 0.022;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
+/* ── Section Bands with Subtle Horizon Transitions ───────────────────────── */
+.section-band {
+  width: 100%;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* ── Section Bands (Cohesive Dark Transitions) ───────────────────────────── */
-.section-band-1 {
+.section-band-alt {
   width: 100%;
-  background: linear-gradient(180deg, rgba(11, 17, 30, 0.85) 0%, rgba(8, 12, 22, 0.75) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  position: relative;
+  background: linear-gradient(180deg, rgba(13, 19, 34, 0.5) 0%, rgba(8, 12, 22, 0.5) 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.section-band-2 {
-  width: 100%;
-  background: linear-gradient(180deg, rgba(7, 10, 18, 0.85) 0%, rgba(11, 17, 30, 0.8) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+/* ── Aesthetic Glass & Metallic Cards ─────────────────────────────────────── */
+.glass-card {
+  background: linear-gradient(145deg, rgba(20, 28, 48, 0.6) 0%, rgba(13, 18, 33, 0.7) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── Glassmorphism Card ──────────────────────────────────────────────────── */
-.card {
-  background: rgba(14, 21, 37, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+.glass-card:hover {
+  border-color: rgba(96, 165, 250, 0.3);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(56, 189, 248, 0.12);
+  transform: translateY(-2px);
 }
 
-.card:hover {
+.glass-card-interactive {
+  background: linear-gradient(145deg, rgba(20, 28, 48, 0.75) 0%, rgba(11, 16, 30, 0.85) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  border-radius: 1.25rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-interactive:hover {
   border-color: rgba(56, 189, 248, 0.4);
-  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.75), 0 0 30px -8px rgba(56, 189, 248, 0.25);
+  box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.8), 0 0 35px -8px rgba(56, 189, 248, 0.2);
   transform: translateY(-3px);
 }
 
-/* ── Keyframe Animations ─────────────────────────────────────────────────── */
-@keyframes textShimmer {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.animate-shimmer {
-  background-size: 200% auto;
-  animation: textShimmer 4s ease infinite;
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.85;
-    transform: scale(1.05);
-  }
-}
-
-.animate-pulse-glow {
-  animation: pulseGlow 5s ease-in-out infinite;
-}
-
-@keyframes floatSlow {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(1deg);
-  }
-}
-
-.animate-float {
-  animation: floatSlow 6s ease-in-out infinite;
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 30s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
-@keyframes laserSweep {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(200%);
-  }
-}
-
-.laser-sweep {
+/* ── Refined Glow Badges ─────────────────────────────────────────────────── */
+.glow-pill {
   position: relative;
-  overflow: hidden;
-}
-
-.laser-sweep::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  animation: laserSweep 3s ease-in-out infinite;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
 }
 
 /* ── Custom Scrollbar ─────────────────────────────────────────────────────── */
@@ -209,12 +126,12 @@ body {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #070A12;
+  background: #080C16;
 }
 ::-webkit-scrollbar-thumb {
   background: #1E293B;
   border-radius: 9999px;
-  border: 2px solid #070A12;
+  border: 2px solid #080C16;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #334155;
@@ -226,5 +143,6 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
